@@ -1,0 +1,67 @@
+/* Header: Results Table */
+table.shiny-table thead{
+	background-color: #666666;
+	color: #EEEEEE;
+}
+
+/* Much nicer way of coding the div-in-div trick  */
+.inline-block-center {
+  text-align: center;
+}
+.inline-block-center div {
+  display: inline-block;
+  text-align: left;
+}
+
+/* Slight shading for violation-specific stuff */
+.violSpec {
+	background-color: #DDD;
+	padding: 7px 14px 7px 14px;
+	margin: 10px 0 10px 0;
+	border-radius: 15px;
+}
+
+/* Different slider color when toggling different nObs ranges */
+.smaller .irs-single, 
+.smaller .irs-bar-edge, 
+.smaller .irs-bar, 
+.smaller .irs-grid-pol{
+	background: Teal;
+}
+
+/* border for irs-bar-edge + irs-bar */
+.smaller .irs-bar-edge, 
+.smaller .irs-bar{
+	border-color: Teal;
+}
+
+/* More padding between actionButton icon and text */
+.fa {
+	padding-right: 5px;
+}
+
+/* Adding small arrow to start of h5 */
+h5:before{
+	font-family: FontAwesome;
+	font-weight: normal;
+	font-style: normal;
+	display: inline-block;
+	text-decoration: inherit;
+	content: "\f0da"; 
+	padding-right: 4px;
+}
+h5{
+	display: inline-block;
+	margin-top: 0px;
+}
+
+/* special margin for second h4 on the "What should I see?" tab*/
+.WSIS{
+	margin-top: 30px !important;
+}
+
+/* Adding whitespace around the raw results download button */
+.rawRes {
+	margin-top: 20px;
+    margin-bottom: 20px;
+}

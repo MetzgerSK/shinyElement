@@ -1,0 +1,346 @@
+/* Sliders: making max/mins readable */
+.irs-min, .irs-max{
+	background: rgba(255,255,255,0.9) !important;
+}
+
+/* Header: Results Table */
+table.shiny-table thead{
+	background-color: #666666;
+	color: #EEEEEE;
+}
+
+/* Small description text for sidebar */
+.descTxt{
+	font-size: 75%; 
+	font-style: italic; 
+	color: #ddd;	
+}
+
+/* Table key: special p class */
+.tabKey {
+	margin: 0px 0px 2.5px;
+}
+
+/* Div class for no bottom margin */
+.noBtmMarg{
+	margin-bottom: 0px !important;
+}
+
+/* Div class for equal height w/o desc text */
+.inpMargBoost{
+	margin-bottom: 35px !important;
+}
+
+/* Much nicer way of coding the div-in-div trick  */
+.inline-block-center {
+  text-align: center;
+}
+.inline-block-center div {
+  display: inline-block;
+  text-align: left;
+}
+
+/* Slight shading for violation-specific stuff */
+.violSpec {
+	background-color: #666;
+	padding: 7px 14px 7px 14px;
+	margin: 10px 0 10px 0;
+	border-radius: 15px;
+}
+
+/* Slight shading for "OK to load saved" checkbox */
+.loadSaved {
+	background-color: #666;
+	padding: 8px;
+	border-radius: 15px;
+}
+
+/* Nuking bottom padding on loadSaved checkbox*/
+.loadSaved > .form-group{
+	margin-bottom:0px !important;
+}
+
+/* For FYI seed modal, bold + color for span */
+.seedVal{
+	font-weight: bold;
+	color: #5bc0de;
+}
+
+/* LTS: desc text padding */
+.ltsTxtPad{
+	margin-bottom: 17px;
+}
+
+/* LTS: slider color */
+.ltsSlider .irs-single, 
+.ltsSlider .irs-bar-edge, 
+.ltsSlider .irs-bar , 
+.ltsSlider .irs-grid-pol{
+	background: #d467a2;
+}
+
+/* LTS: border for irs-bar-edge + irs-bar */
+.ltsSlider .irs-bar-edge, 
+.ltsSlider .irs-bar{
+	border-color: #d467a2;
+}
+
+/* nObs: Different slider color when toggling different ranges */
+.smaller .irs-single, 
+.smaller .irs-bar-edge, 
+.smaller .irs-bar, 
+.smaller .irs-grid-pol{
+	background: DarkOrange;
+}
+
+/* nObs: border for irs-bar-edge + irs-bar */
+.smaller .irs-bar-edge, 
+.smaller .irs-bar{
+	border-color: DarkOrange;
+}
+
+/* More padding between actionButton icon and text */
+.fa, .fas {
+	padding-right: 5px;
+}
+
+/* Adding small arrow to start of h5 */
+h5:before{
+	font-family: FontAwesome;
+	font-weight: normal;
+	font-style: normal;
+	display: inline-block;
+	text-decoration: inherit;
+	content: "\f0da"; 
+	padding-right: 4px;
+}
+h5{
+	display: inline-block;
+	margin-top: 0px;
+}
+
+/* special margin for second h4 on the "What should I see?" tab*/
+.WSIS{
+	margin-top: 30px !important;
+}
+
+/* Adding whitespace around the raw results download button */
+.rawRes {
+	margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* DT: making DT header readable with Darkly */
+table.dataTable > thead {
+	background-color: #777;
+}
+
+/* DT: making DT contents readable with Darkly */
+table.dataTable > tbody {
+	color: #000;
+}
+
+/* DT: making table page scroller readable with Darkly */
+.dataTables_paginate{
+	background-color: #FFF;
+	border-radius: 25px;
+    padding-bottom: 0.25em;
+    padding-right: 0.25em;
+    padding-left: 0.15em;
+}
+
+/* DT: rounding corners of other hover buttons */
+.dataTables_wrapper .dataTables_paginate .paginate_button{
+	border-radius: 25px;
+}
+
+/* Manual tooltip add for spans (for linear/non-lin badges) */
+/* HT: http://jsfiddle.net/8nnwytbL/ */
+[data-tooltip] {
+    display: inline-block;
+    position: relative;
+    cursor: help;
+    padding: 4px;
+}
+/* Tooltip styling */
+[data-tooltip]:before {
+    content: attr(data-tooltip);
+    display: none;
+    position: absolute;
+    background: #777;
+    color: #eee;
+    padding: 4px 8px;
+    font-size: 14px;
+    line-height: 1.4;
+    min-width: 100px;
+    text-align: center;
+    border-radius: 2px;
+}
+/* Dynamic horizontal centering */
+[data-tooltip-position="top"]:before,
+[data-tooltip-position="bottom"]:before {
+    left: 50%;
+    -ms-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+/* Dynamic vertical centering */
+[data-tooltip-position="right"]:before,
+[data-tooltip-position="left"]:before {
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+[data-tooltip-position="top"]:before {
+    bottom: 100%;
+    margin-bottom: 6px;
+}
+[data-tooltip-position="right"]:before {
+    left: 100%;
+    margin-left: 6px;
+}
+[data-tooltip-position="bottom"]:before {
+    top: 100%;
+    margin-top: 6px;
+}
+[data-tooltip-position="left"]:before {
+    right: 100%;
+    margin-right: 6px;
+}
+/* Tooltip arrow styling/placement */
+[data-tooltip]:after {
+    content: '';
+    display: none;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+}
+/* Dynamic horizontal centering for the tooltip */
+[data-tooltip-position="top"]:after,
+[data-tooltip-position="bottom"]:after {
+    left: 50%;
+    margin-left: -6px;
+}
+/* Dynamic vertical centering for the tooltip */
+[data-tooltip-position="right"]:after,
+[data-tooltip-position="left"]:after {
+    top: 50%;
+    margin-top: -6px;
+}
+[data-tooltip-position="top"]:after {
+    bottom: 100%;
+    border-width: 6px 6px 0;
+    border-top-color: #000;
+}
+[data-tooltip-position="right"]:after {
+    left: 100%;
+    border-width: 6px 6px 6px 0;
+    border-right-color: #000;
+}
+[data-tooltip-position="bottom"]:after {
+    top: 100%;
+    border-width: 0 6px 6px;
+    border-bottom-color: #000;
+}
+[data-tooltip-position="left"]:after {
+    right: 100%;
+    border-width: 6px 0 6px 6px;
+    border-left-color: #000;
+}
+/* Show the tooltip when hovering */
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+    display: block;
+    z-index: 50;
+}
+
+/* Hijacking the BS callout code, since not included in Shiny's CSS, it seems. 
+    ** Tweaked for Darkly theme **  */
+/* HT: https://cpratt.co/twitter-bootstrap-callout-css-styles/ */
+.bs-callout {
+	padding: 20px;
+	margin: 20px 0;
+	border: 1px solid #eee;
+	border-left-width: 5px;
+	border-radius: 3px;
+}
+.bs-callout h4 {
+	margin-top: 0;
+	margin-bottom: 5px;
+}
+.bs-callout p:last-child {
+	margin-bottom: 0;
+}
+.bs-callout code {
+	border-radius: 3px;
+}
+.bs-callout+.bs-callout {
+	margin-top: -5px;
+}
+.bs-callout-default {
+	border-left-color: #777;
+}
+.bs-callout-default h4 {
+	color: #777;
+}
+.bs-callout-primary {
+	border-left-color: #375a7f; 
+}
+.bs-callout-primary h4 {
+	color: #375a7f; 
+}
+.bs-callout-success {
+	border-left-color: #00bc8c; 
+}
+.bs-callout-success h4 {
+	color: #00bc8c; 
+}
+.bs-callout-danger {
+	border-left-color: #E74C3C; 
+}
+.bs-callout-danger h4 {
+	color: #E74C3C; 
+}
+.bs-callout-warning {
+	border-left-color: #F39C12; 
+}
+.bs-callout-warning h4 {
+	color: #F39C12; 
+}
+.bs-callout-info {
+	border-left-color: #5bc0de; 
+}
+.bs-callout-info h4 {
+	color: #5bc0de; 
+}
+
+/* Adding class for close button at upper right for bs callouts */
+.bs-close{
+	color: #999;
+	display: block;
+    float: right;
+    position: relative;
+    top: -10px;
+    right: -10px;
+    height: 20px;
+}
+
+.bs-close:hover{
+	color: #666;
+	transform: scale(1.2);
+	transition: transform .25s; 
+}
+
+/* Centering anchor in window */
+.anchor{
+    display: block;
+    height: 50vh; 
+    margin-top: -50vh;
+    visibility: hidden;
+	display: contents;
+}

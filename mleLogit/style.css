@@ -1,0 +1,269 @@
+/* Much nicer way of coding the div-in-div trick  */
+.inline-block-center {
+	text-align: center;
+}
+.inline-block-center div {
+	display: inline-block;
+	text-align: left;
+}
+
+/* To get the DT centered, but not super narrow (to avoid the nesting 
+   induced by the usual div-in-div trick, so that widths are adjustable) */
+.ibcOuter {
+	text-align: center;
+}
+.ibcInner {
+	display: inline-block;
+	text-align: left;
+}
+
+/* Getting tooltips out of all small-caps */
+.tooltip{
+	text-transform: none;
+}
+
+/* Small description text for sidebar */
+.descTxt{
+	font-size: 75%; 
+	font-style: italic; 
+	color: #999;	
+}
+
+/* Shrink checkbox */
+.pretty.p-icon .state .icon{
+	font-size: .8em;
+    width:  calc(.8em + 2px);
+    height: calc(.8em + 2px);
+	
+	padding-left: 0.4em;
+    padding-top:  1.5em;
+	top: 0; /* if multiline label*/
+}
+
+/* PRETTY CHECKBOX MULTI LINE */
+/* Pretty checkbox overrides  */
+.pretty {
+    white-space: inherit;
+    width: 14rem;
+}
+
+.pretty .state label{
+	text-indent: 0;
+	line-height: 1.25;
+	padding-left: 2rem;
+}
+
+.pretty .state label:after, 
+.pretty .state label:before{
+	top: calc(50% - ((1em + 2px)/2));
+}
+
+/* Bump h4 top margin across board*/
+h4{
+	margin-top: 20px;
+}
+
+/* Add double caret in to help */
+h4:before{
+	font-family: FontAwesome; 
+	content: "\f101 \00a0";
+}
+
+/* Kill the extra space before the h4 best guesses, though */
+.bestGuess, .bestGuess_ans {
+	margin-top: 0px;
+}
+
+/* Also: no extra embellishment for the callout box h4s 
+   OR for the modal popup title*/
+.bs-callout h4:before, h4.modal-title:before{
+	content: "";
+}
+
+/* All button text bigger */
+.btn{
+	font-size: 95%;
+}
+
+/* Model output in black */
+#modObj{
+	color: #000000;
+}
+
+/* Bumping margin for explanation popup */
+.modal-body h4{
+	margin-top: 20px;	
+	margin-bottom: 7px;
+}
+
+/* Killing the extra margin for the first header */
+.modal-body h4:first-of-type{
+	margin-top: 0px;
+}
+
+/* killing border for modal (to then make title diff color) */
+.modal-content{
+	border: 0px;
+}
+
+/* modal header invert */
+.modal-header{
+	background-color: #3E3F3A;
+	color: #FFF;
+	cursor: move;
+}
+
+/* change color of close button in modal */
+.close{
+	color: #fff;
+	opacity: 0.5;
+}
+
+/* invert color for hover + close button in modal */
+.close:hover{
+	color: #fff;
+	opacity: 1;
+}
+
+/* HR line - little more kick */
+hr{ 
+    margin-bottom: 20px !important;
+	margin-top: -45px !important;
+	padding-top: 15px !important;
+	
+	height: 50px !important;
+    border: 0 !important;
+	border-bottom: 1px solid #77777778 !important;
+    box-shadow: 0 15px 10px -20px #333 !important;
+}
+
+/* Styling DT header */
+.dataTables_wrapper thead{
+	background-color: #000;
+	color: #fff;
+}
+
+/* Setting solution hover behavior */
+#solnButton:hover{
+	background-color: #7d0c02 !important;
+	border: 0px 0px 0px 0px !important;*/
+}
+
+/* Setting reset hover behavior */
+#resetButton:hover{
+	background-color: #666 !important;
+	border: 0px 0px 0px 0px !important;
+}
+
+/* Setting explanation hover behavior */
+#explainButton:hover{
+	background-color: #93C54B !important;
+	color: #000 !important;
+}
+
+/* setting 'show full LLH' button hover */
+#fullLLHButton:hover{
+	box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.1);
+	transition: all 200ms ease-out;
+}
+
+/* padding for LLH button in general (need to apply to wrapper div) */
+#inside_restore.llhBtn{
+	padding-top: 5.5px !important; 
+	padding-bottom: 5.5px !important; 
+}
+
+/* restore button: general properties */
+#restoreButton{
+	color: #000; 
+	background-color: #FF8C00; 
+	height: 30px; 
+	padding: 0px 10px 0px 10px; 
+	font-size:80%;
+}
+
+/* for restore button: getting space between icon and text */
+#restoreButton i{
+	padding-right: 3px;
+}
+
+/* Setting restore hover behavior */
+#restoreButton:hover{
+	background-color: #eb8100 !important;
+}
+
+/* for restore - setting the float */
+#wrapper_llhInfo{
+	display: flex;
+	overflow: hidden;
+}
+
+#inside_llh{
+	float: left;
+}
+
+#inside_restore{
+	margin-left: 5px;
+}
+
+/* For centering the button's text and the button's div */
+#inside_restore, #inside_explain, #restoreButton{
+	display: -webkit-box; 
+	display: -ms-flexbox; 
+	display: flex; 
+	-webkit-box-align: center; 
+	-ms-flex-align: center; 
+	align-items: center;
+	-webkit-box-pack: center; 
+	-ms-flex-pack: center; 
+	justify-content: center;
+}
+
+/* for final output - to stop div from shifting around when lit up */
+#wrapper_rslts{
+	padding: 3px;
+    box-shadow: 0 0 20px 5px rgba(255, 0, 0, 0);
+}
+
+/* Adding whitespace around the raw results download button */
+.rawRes {
+	margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* spacing for stargazer table + font size */
+#sgzTable{
+	margin-top: 1em;
+	margin-left: 20px;
+	font-size: 1.05em;
+	margin-bottom: 2em;
+}
+
+/* Center title in stargazer table (not in mood to argue with R) */
+#sgzTable caption{
+	text-align: center;
+}
+
+/* Make link color more legible (because seriously) */
+a, a:visited{
+	color: #d9534f; 
+}
+
+/* Keep original green for hover */
+a:hover{
+	color: #93c54b;
+}
+
+/* Different slider color when toggling different nObs ranges */
+.smaller .irs-single, 
+.smaller .irs-bar-edge, 
+.smaller .irs-bar, 
+.smaller .irs-grid-pol{
+	background: #F47C3C; 
+}
+
+/* border for irs-bar-edge + irs-bar */
+.smaller .irs-bar-edge, 
+.smaller .irs-bar{
+	border-color: #f47c3C; 
+}

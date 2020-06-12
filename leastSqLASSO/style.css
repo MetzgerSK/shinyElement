@@ -1,0 +1,300 @@
+/* Much nicer way of coding the div-in-div trick  */
+.inline-block-center {
+	text-align: center;
+}
+.inline-block-center div {
+	display: inline-block;
+	text-align: left;
+}
+
+/* To get the DT centered, but not super narrow (to avoid the nesting 
+   induced by the usual div-in-div trick, so that widths are adjustable) */
+.ibcOuter {
+	text-align: center;
+}
+.ibcInner {
+	display: inline-block;
+	text-align: left;
+}
+
+/* Slight shading for lambda stuff (yoink from violSpec code)*/
+.lambCl {
+	background-color: #e8decd;
+	padding: 7px 14px 7px 14px;
+	margin: 10px 0 10px 0;
+	border-radius: 15px;
+}
+
+/* Step headers */
+.steps{
+	/* Basics */
+	background-color: #325D88; 
+	color: white;
+	
+	/* Padding and corner round */
+	padding: 15px;
+	border-radius: 8px;  
+	
+	/* font size */
+	font-size: 120%;
+	
+	/* to make the arrow work */
+	position: relative;
+	
+	/* To center vert */
+	display: -webkit-box; 
+	display: -ms-flexbox; 
+	display: flex; 
+	-webkit-box-align: center; 
+	-ms-flex-align: center; 
+	align-items: center;
+    -webkit-box-pack : center; 
+	-ms-flex-pack : center; 
+	justify-content: center;
+}
+
+/* For adding the kick to the bsModal window with the 'why is this relv?' expl. */
+#div_benchHL{
+    text-align: center;
+	font-weight: 700;
+	padding: 5px;
+	font-size: 175%;
+	width: 75%;
+	margin: 0 auto;
+}
+
+/* Getting tooltips out of all small-caps */
+.tooltip{
+	text-transform: none;
+}
+
+/* Tweaking tooltip color to create contrast w/dataGen button 
+   (for all sliders, b/c scoping to n slider only will be more
+   trouble than it's worth) */
+.tooltip .tooltip-inner {   
+	background-color: #585a52;
+	box-shadow: -5px 5px 10px 5px #9a9c97;
+}
+.tooltip .tooltip-arrow{
+	border-bottom-color: #585a52 !important;  
+}
+
+/* Small description text for sidebar */
+.descTxt{
+	font-size: 75%; 
+	font-style: italic; 
+	color: #ddd;	
+}
+
+/* Bump h4 top margin across board*/
+h4{
+	margin-top: 20px;
+}
+
+/* Add double caret in to help */
+h4:before{
+	font-family: FontAwesome; 
+	content: "\f101 \00a0";
+}
+
+/* Kill the extra space before the h4 best guesses, though */
+.bestGuess, .bestGuess_ans {
+	margin-top: 0px;
+}
+
+/* Also: no extra embellishment for the callout box h4s*/
+.bs-callout h4:before, h4.modal-title:before{
+	content: "";
+}
+
+/* All button text bigger */
+.btn{
+	font-size: 95%;
+}
+
+/* Model output in black */
+#modObj{
+	color: #000000;
+}
+
+/* Bumping margin for explanation popup */
+.modal-body h4{
+	margin-top: 20px;
+	margin-bottom: 7px;
+}
+
+/* Killing the extra margin for the first header */
+.modal-body h4:first-of-type{
+	margin-top: 0px;
+}
+
+/* killing border for modal (to then make title diff color) */
+.modal-content{
+	border: 0px;
+}
+
+/* modal header invert */
+.modal-header{
+	background-color: #3E3F3A;
+	color: #FFF;
+}
+
+/* change color of close button in modal */
+.close{
+	color: #fff;
+	opacity: 0.5;
+}
+
+/* invert color for hover + close button in modal */
+.close:hover{
+	color: #fff;
+	opacity: 1;
+}
+
+/* HR line - little more kick */
+hr{ 
+    margin-bottom: 20px !important;
+	margin-top: -45px !important;
+	padding-top: 15px !important;
+	
+	height: 50px !important;
+    border: 0 !important;
+	border-bottom: 1px solid #77777778 !important;
+    box-shadow: 0 15px 10px -20px #333 !important;
+}
+
+/* Styling DT header */
+.dataTables_wrapper thead{
+	background-color: #000;
+	color: #fff;
+}
+
+/* Setting solution hover behavior */
+#solnButton:hover{
+	background-color: #7d0c02 !important;
+	border: 0px 0px 0px 0px !important;
+}
+
+/* Setting reset hover behavior */
+#resetButton:hover{
+	background-color: #666 !important;
+	border: 0px 0px 0px 0px !important;
+}
+
+/* Setting explanation hover behavior */
+#explainButton:hover{
+	background-color: #93C54B !important; 
+	color: #000 !important;
+}
+
+/* setting 'show full LLH' button hover */
+#fullLLHButton:hover{
+	box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.1);
+	transition: all 200ms ease-out;
+}
+
+/* padding for LLH button in general (need to apply to wrapper div) */
+#inside_restore.llhBtn{
+	padding-top: 5.5px !important; 
+	padding-bottom: 5.5px !important; 
+}
+
+/* restore button: general properties */
+#restoreButton{
+	color: #000; 
+	background-color: #FF8C00; 
+	height: 30px; 
+	padding: 0px 10px 0px 10px; 
+	font-size:80%;
+}
+
+/* for restore button: getting space between icon and text */
+#restoreButton i{
+	padding-right: 3px;
+}
+
+/* Setting restore hover behavior */
+#restoreButton:hover{
+	background-color: #eb8100 !important;
+}
+
+/* for restore - setting the float */
+#wrapper_llhInfo{
+	display: flex;
+	overflow: hidden;
+}
+
+#inside_llh{
+	float: left;
+}
+
+#inside_restore{
+	margin-left: 5px;
+}
+
+/* For centering the button's text and the button's div */
+#inside_restore, #inside_explain, #restoreButton{
+	display: -webkit-box; 
+	display: -ms-flexbox; 
+	display: flex; 
+	-webkit-box-align: center; 
+	-ms-flex-align: center; 
+	align-items: center;
+	-webkit-box-pack: center; 
+	-ms-flex-pack: center; 
+	justify-content: center;
+}
+
+/* for final output - to stop div from shifting around when lit up */
+#wrapper_rslts{
+	padding: 3px;
+    box-shadow: 0 0 20px 5px rgba(255, 0, 0, 0);
+}
+
+/* hack to leave space - invisible text */
+.allW{
+	color: rgb(0,0,255, 0);
+}
+
+/* Adding whitespace around the raw results download button */
+.rawRes {
+	margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* spacing for stargazer table + font size */
+#sgzTable{
+	margin-top: 1em;
+	margin-left: 20px;
+	font-size: 1.05em;
+	margin-bottom: 2em;
+}
+
+/* Center title in stargazer table (not in mood to argue with R) */
+#sgzTable caption{
+	text-align: center;
+}
+
+/* Make link color more legible (because seriously) */
+a, a:visited{
+	color: #d9534f; 
+}
+
+/* Keep original green for hover */
+a:hover{
+	color: #93c54b;
+}
+
+/* Different slider color when toggling different nObs ranges */
+.smaller .irs-single, 
+.smaller .irs-bar-edge, 
+.smaller .irs-bar, 
+.smaller .irs-grid-pol{
+	background: #F47C3C; 
+}
+
+/* border for irs-bar-edge + irs-bar */
+.smaller .irs-bar-edge, 
+.smaller .irs-bar{
+	border-color: #f47c3C; 
+}

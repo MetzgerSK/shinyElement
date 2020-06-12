@@ -1,0 +1,33 @@
+/* Much nicer way of coding the div-in-div trick  */
+.inline-block-center {
+  text-align: center;
+}
+.inline-block-center div {
+  display: inline-block;
+  text-align: left;
+}
+
+/* make RC slider special color to give it some punch */
+#rcSlider_cens .irs-bar{
+	background: #4247ca ;
+	border-top: 1px solid #4247ca;
+	border-bottom: 1px solid #4247ca;
+}
+
+#rcSlider_cens .irs-bar-edge{
+	border: #4247ca;
+	background: #4247ca;
+}
+
+#rcSlider_cens .irs-single{
+	background: #4247ca;
+}
+
+#rcSlider_cens .irs-grid-pol{
+	background: #4247ca;
+}
+
+#rcSlider_cens .irs-slider{
+	border: 1px solid #BBB;
+	background: #CCC;
+}

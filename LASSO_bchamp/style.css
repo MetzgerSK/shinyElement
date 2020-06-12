@@ -1,0 +1,95 @@
+/* Much nicer way of coding the div-in-div trick  */
+.inline-block-center {
+	text-align: center;
+}
+.inline-block-center div {
+	display: inline-block;
+	text-align: left;
+}
+
+/* Everything in PT Sans */
+body {
+	font-family: 'PT Sans', Arial;
+	font-size: 150% ;
+}
+
+/* Making headers bold */
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
+	font-weight: 700;
+}
+
+/* Decrease padding between top header in bsModal and horz line under title */
+.modal-body{
+	padding-top: 5px;   
+}
+
+/* Forcing space between blockquote and start of next text block */
+blockquote {
+	margin-bottom: 3em;
+}
+
+/* Boosting top padding for non-first header lines */
+.topMarg25{
+	margin-top: 25px;
+}
+
+/* For centering the button's text and the button's div */
+#inside_explain{
+    display: -webkit-box; 
+	display: -ms-flexbox; 
+	display: flex; 
+	-webkit-box-align: center; 
+	-ms-flex-align: center; 
+	align-items: center;
+	-webkit-box-pack: center; 
+	-ms-flex-pack: center; 
+	justify-content: center;
+}
+
+/* For adding the kick to the bsModal window with the 'why is this relv?' expl. */
+#div_benchHL{
+    text-align: center;
+	color: #333;
+	font-weight: 700;
+	font-family: 'PT Sans Narrow';
+	padding: 5px;
+	font-size: 175%;
+	width: 75%;
+	margin: 0 auto;
+}
+
+
+/* HT: https://1stwebdesigner.com/css-snippets-blockquotes/ */
+.brooks {
+	position: relative;
+	font-family: 'Roboto', serif;
+	font-size: $base-font-size;
+	line-height: $base-line-height;
+		
+	box-shadow: 1px 1px 1px #999,
+				2px 2px 1px #999,
+				3px 3px 1px #999;
+	transition-duration: .3s;
+	
+	display: inline-block;
+	background: #eee;
+	padding: 40px 30px 30px 30px;  
+	border-radius: 10px;
+	color: #333
+
+}
+.brooks::before {
+    font-family: 'Sanchez', serif;
+    content: '\201C  ';
+    position: absolute;
+    top: -0.25em;
+    left: 0.29em; 
+    color: rgba(0,0,0,0.15); 
+        font-size: 950%; 
+        z-index: 1;
+}
+.brooks:hover {
+    box-shadow: 1px 1px 5px #999,
+    2px 2px 6px #999,
+    3px 3px 7px #999;
+}
