@@ -34,8 +34,6 @@ cushion <- function(var, pct){
 
 # > SERVER FUNCTION ----
 server <- function(input, output, session){
-    # Load the 
-    source("globalPt_mlOptimFunc.R", local=TRUE)
     
     # So that the values persist
     bestSoFar <- reactiveValues(llh = NULL, # best guess for LLH value so far
@@ -155,7 +153,7 @@ server <- function(input, output, session){
 
         withMathJax(
             paste('\\(
-                  L\\left( \\alpha, \\beta_1, \\sigma_u ~|~y_i, x_i\\right) =
+                  L\\left( \\alpha, \\beta_1, \\sigma_u ~|~y, x\\right) =
                   \\prod  \\limits_{i=1}^{', input$nObs, '} \\left\\{ ', frac, ' \\right\\} \\)')
         )
     })
@@ -174,7 +172,7 @@ server <- function(input, output, session){
             paste0(
                '\\( 
                 \\begin{align}
-                    \\ln L \\left( \\alpha, \\beta_1, \\sigma_u~|~y_i, x_i \\right) &= 
+                    \\ln L \\left( \\alpha, \\beta_1, \\sigma_u~|~y, x \\right) &= 
                         \\sum \\limits_{i=1}^{', input$nObs, '} 
                         \\left\\{
                             \\ln \\left(', frac, '\\right)
@@ -196,7 +194,7 @@ server <- function(input, output, session){
     output$eq_fullLLH_all <- renderUI({
         opener <- paste0('\\ln L\\left( \\alpha=', input$aHat,
                                                         ',~\\beta_1 = ', input$b1Hat, ',~\\sigma_u = ', input$sigmaHat, '
-                                                        ~|~y_i, x_i \\right)')      
+                                                        ~|~y, x \\right)')      
         equation <- paste0('\\( ', opener, ' = \\\\ ')
         
         # Loop through every single observation      
@@ -236,7 +234,9 @@ server <- function(input, output, session){
     output$eq_fullLLH_all_unsimp <- renderUI({
 
         opener <- paste0('\\ln L\\left( \\alpha=', input$aHat, 
-                                                        ',~\\beta_1 = ', input$b1Hat, ',~\\sigma_u = ', input$sigmaHat,'~|~y_i, x_i \\right)')
+                                                        ',~\\beta_1 = ', input$b1Hat, 
+                                                        ',~\\sigma_u = ', input$sigmaHat,
+                                        '~|~y, x \\right)')
         equation <- paste0('\\(
                            ', opener, '  = \\\\ ')
 

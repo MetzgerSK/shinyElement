@@ -95,11 +95,11 @@ server <- function(input, output, session){
 
         withMathJax(
             paste(
-                '\\( L\\left( \\alpha, \\beta_1~|~y_i, x_i\\right) =',
+                '\\( L\\left( \\alpha, \\beta_1~|~y, x\\right) =',
                 '\\prod\\limits_{i=1}^{', input$nObs, '}',
                 '\\left\\{ 
                     \\left(', frac, '\\right)^{y_i}  *
-                    \\left( -', frac, ' \\right)^\\left( 1 - y_i \\right)',
+                    \\left( \\frac{1}{', den, '} \\right)^\\left( 1 - y_i \\right)',
                 '\\right\\}\\)'
             )
         )
@@ -116,9 +116,9 @@ server <- function(input, output, session){
     
         withMathJax(
             paste(
-                '\\( \\ln L\\left( \\alpha, \\beta_1~|~y_i, x_i\\right) = \\sum\\limits_{i=1}^{', input$nObs, '} \\left\\{
+                '\\( \\ln L\\left( \\alpha, \\beta_1~|~y, x\\right) = \\sum\\limits_{i=1}^{', input$nObs, '} \\left\\{
                 \\left[ y_i* \\ln \\left(', frac, '\\right) \\right] +
-                \\left[ \\left( 1 - y_i \\right) * \\ln \\left( -', frac, ' \\right) \\right] \\right\\}\\)'
+                \\left[ \\left( 1 - y_i \\right) * \\ln \\left( \\frac{1}{', den, '} \\right) \\right] \\right\\}\\)'
             )
         )
     })
@@ -127,7 +127,7 @@ server <- function(input, output, session){
     output$eq_fullLLH_all <- renderUI({
         
         equation <- paste0('\\(  \\ln L\\left( \\alpha=', input$aHat, 
-                                                        ',~\\beta_1 = ', input$b1Hat, '~|~y_i, x_i \\right) = ')
+                                                        ',~\\beta_1 = ', input$b1Hat, '~|~y, x \\right) = ')
         
         # Loop through every single observation      
         for(i in 1:input$nObs){
@@ -140,8 +140,8 @@ server <- function(input, output, session){
             
             # get proper sign depending on whether the DV for this obsv is a 0 or 1 with ifelses
             equation <- paste0(equation, ifelse(i!=1, "+", ""), ' \\left. \\ln \\left( ', 
-                               ifelse(all()[[1]][i,1]==0, " -", ""), frac, 
-                               ifelse(all()[[1]][i,1]==0, "", ""), ' \\right) \\right.') 
+                               '\\frac{', ifelse(all()[[1]][i,1]==0, "1", num), '}{', den, '}', 
+                               '\\right) \\right.') 
         }
             
         # Insert alignment break
@@ -151,7 +151,7 @@ server <- function(input, output, session){
         llh <- ifelse(input$solnButton==0, round(obsLLH()[[1]], 5), round(all()[[3]],5))
 
         equation <- paste0(equation, ' \\ln L\\left( \\alpha=', input$aHat,
-                                                        ',~\\beta_1 = ', input$b1Hat, '~|~y_i, x_i \\right) =', llh)
+                                                        ',~\\beta_1 = ', input$b1Hat, '~|~y, x \\right) =', llh)
 
         # Put MathJax closer tag
         equation <- paste0(equation, '  \\)')
@@ -166,7 +166,7 @@ server <- function(input, output, session){
     output$eq_fullLLH_all_unsimp <- renderUI({
 
         equation <- paste0('\\(  \\ln L\\left( \\alpha=', input$aHat, 
-                                                        ',~\\beta_1 = ', input$b1Hat, '~|~y_i, x_i \\right) = ')
+                                                        ',~\\beta_1 = ', input$b1Hat, '~|~y, x \\right) = ')
 
         # Loop through every single observation
         for(i in 1:input$nObs){
@@ -179,7 +179,7 @@ server <- function(input, output, session){
 
             # get proper sign depending on whether the DV for this obsv is a 0 or 1 with ifelses
             equation <- paste0(equation, ifelse(i!=1, "+", " \\\\ ~~ "), '\\left\\{', all()[[1]][i,1], '* \\left. \\ln \\left( ', frac, " \\right) \\right. +",
-                               '\\left(1-', all()[[1]][i,1], '\\right) * \\left. \\ln \\left( -', frac, ' \\right) \\right. \\right\\} ') 
+                               '\\left(1-', all()[[1]][i,1], '\\right) * \\left. \\ln \\left( \\frac{1}{', den, '} \\right) \\right. \\right\\} ') 
         }
         
         # Insert alignment break
@@ -189,7 +189,7 @@ server <- function(input, output, session){
         llh <- ifelse(input$solnButton==0, round(obsLLH()[[1]], 5), round(all()[[3]],5))
 
         equation <- paste0(equation, ' \\ln L\\left( \\alpha=', input$aHat,
-                                                        ',~\\beta_1 = ', input$b1Hat, '~|~y_i, x_i \\right) =', llh)
+                                                        ',~\\beta_1 = ', input$b1Hat, '~|~y, x \\right) =', llh)
 
         # Put MathJax closer tag
         equation <- paste0(equation, '  \\)')
