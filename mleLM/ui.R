@@ -222,7 +222,7 @@ ui <- fluidPage(
     ),
     fluidRow(align="center", 
         br(), 
-        HTML(paste(strong("Author: "), a(href="http://www.shawnakmetzger.com", "Shawna K. Metzger"),  ", ",
+        HTML(paste0(strong("Author: "), a(href="http://www.shawnakmetzger.com", "Shawna K. Metzger"),  ", ",
                   a(href="mailto:shawna@shawnakmetzger.com", "shawna@shawnakmetzger.com"))), br(), 
         HTML("<em>Using Shiny to Teach Econometric Models</em>, Cambridge University Press")
     )       
