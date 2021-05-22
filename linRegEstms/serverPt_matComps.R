@@ -90,11 +90,17 @@ for(i in 1:length(tabList)){
             ## relevant input
             inp <- as.numeric(input$iMat", stub, ")
             
+            ## Get currently selected option from other list (if it's the to-be
+            ## removed object, default to first item in list)
+            selJ <- ifelse(inp!=as.numeric(input$jMat", stub, "), 
+                            as.numeric(input$jMat", stub, "),
+                            ifelse(inp==1, 2, 1))   # if inp's OLS, go to 2nd item in list
+        
             ## Remove this option from other list
             cListJ <- ", modL, "[-c(which(", modL, "==inp),which(", modL, "==6))]
-            updateSelectInput(session, 'jMat", stub, "', choices=cListJ)
-            
-        })
+            updateSelectInput(session, 'jMat", stub, "', choices=cListJ, selected=selJ)
+
+        }, ignoreInit=TRUE)
     ")
     
     # Execute it

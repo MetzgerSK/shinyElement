@@ -72,7 +72,7 @@ tableKeyBase <- {
                                       "Weighted least squares, with weights equal to \\\\( \\\\lvert x \\\\rvert^{-1} \\\\)"),
                             tabKeyRow("nlin", "FGLS", 
                                       "Feasible generalized least squares 
-                                        <em>(synonym: estimated generalized least squares [EGLS])</em>")
+                                        <em>(synonym: estimated/empirical generalized least squares [EGLS])</em>")
                           ),
                     tableKeyBase
                 )

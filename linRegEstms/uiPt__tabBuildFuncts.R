@@ -7,7 +7,7 @@ copyBtn <- function(stub) {
     expr <- paste0('
         div(class="inline-block-center",
             div(
-                actionButton("copyButton_', stub, '", "No Violation Scenario",icon("copy")), 
+                actionButton("copyButton_', stub, '", "No Violation Scenario", icon("copy")), 
                 bsTooltip("copyButton_', stub, '", noViolTooltip,
                           placement="bottom", trigger="hover")
             )
