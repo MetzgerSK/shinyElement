@@ -21,7 +21,7 @@ jqui_draggable(
         
         p( "You have (an artificially limited range of) slope 
             and intercept combinations to check manually, using the sliders in the left sidebar.  The regression line corresponding to your current 
-            slope and intercept is the black line in the graph.  The \"likeliness\" of seeing your data, given this slope and intercept, is what's 
+            slope and intercept is the red solid line in the graph.  The \"likeliness\" of seeing your data, given this slope and intercept, is what's 
             being displayed under \"Current Point Total\".  If you have the prose slider set to \"Formal\", it'll instead read \"Current log-likelihood 
             value\". In \"Formal\" prose mode, you'll also see a small eyeball button where you can view the actual formula for the calculation producing that 
             value, if you'd like."),

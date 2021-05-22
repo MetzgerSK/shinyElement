@@ -201,12 +201,34 @@ server <- function(input, output, session){
     })
     
     # MAIN GRAPH ====
-    output$gph<- renderPlot({  
-        x <- seq(-10, 10, by = 0.005)
-        pr <- plogis(input$aHat + input$b1Hat*x)
+    output$gph<- renderPlot({
+        # Generate predicted value, given this expression.
+        dat <- all()[[1]] 
+        datFake <- data.frame(fakeX = seq(-10,10,0.005)) %>%
+                         mutate(yHat = plogis(fakeX*input$b1Hat + input$aHat))
+
+        # graph
+        gg <- ggplot() +
+                geom_point(aes(y=dat$y, x=dat$x1), color="blue", alpha=0.75) +
+                geom_line(aes(y=datFake$yHat, x=datFake$fakeX), col="red") +
+            labs(x="x", 
+                 y=expression("Pr("*italic("y")~"= 1)")
+                ) +
+            coord_cartesian(ylim=c(0,1), xlim=c(-10,10)) + 
+            theme(plot.title = element_text(hjust = 0.5, 
+                                            face = "bold", 
+                                            family = "Roboto")
+                 )
         
-        plot(x, pr, type="l", ylim=c(0,1), ylab="Pr(y = 1| x)", xlab="x")
-            points(all()[[1]]$x1, all()[[1]]$y, col="blue")
+        # If there's more than 125 observations, add rugs
+        if(nrow(dat)>=125){
+            gg <- gg + 
+                    geom_rug(aes(x=filter(dat, y==1)$x1), sides="t", alpha=0.2) +
+                    geom_rug(aes(x=filter(dat, y==0)$x1), sides="b", alpha=0.2)
+        }
+        
+        # Return plot
+        gg 
     })
     
     # RAW MODEL ====
@@ -214,6 +236,7 @@ server <- function(input, output, session){
     output$modObj <- renderPrint({ 
         summary(all()[[2]]) 
     })
+    
     # STARGAZER TABLE ====
     output$sgzTable <- renderUI({
         # number of places to round to

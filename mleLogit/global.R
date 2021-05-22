@@ -5,6 +5,7 @@ library(shinyWidgets)
 library(shinycssloaders)
 
 ## Server
-library(magrittr)
+library(dplyr)
+library(ggplot2)
 library(stargazer)
 library(shinyjqui)
