@@ -260,7 +260,7 @@ server <- function(input, output, session){
     })
     
     # CURRENT GUESS' LLH VALUE ====
-    output$llh <- output$llh.2 <- renderUI({
+    output$llh <- renderUI({
         withMathJax(
             paste0('\\(', round(obsLLH()[[1]], 5), '\\)')
         )
@@ -439,11 +439,11 @@ server <- function(input, output, session){
     runjs('
         $(\'a[href="#wrapper_rslts"]\').click(function(){ // when the anchor is clicked
             
-            $("#wrapper_rslts").css({"boxShadow" : "0 0 20px 5px #d9534f"});  //"border"    : "2px solid #d9534f", 
+            $("#wrapper_rslts").css({"boxShadow" : "0 0 20px 5px #d9534f"}); 
             
             // Change everything back once you mouseover the results
             $("#wrapper_rslts").mouseover(function() { 
-                $("#wrapper_rslts").css({"boxShadow" : "0 0 20px 5px rgba(255, 0, 0, 0)" })  //"border"    : "rgba(255, 0, 0, 0)", 
+                $("#wrapper_rslts").css({"boxShadow" : "0 0 20px 5px rgba(255, 0, 0, 0)" })  
             });
         });
     ')
