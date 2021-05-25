@@ -7,14 +7,18 @@ img{padding-bottom:0.1em;}
 
 <em>For an identical version of this readme that has the repo's contents hidden: [https://MetzgerSK.github.io/shinyElement](https://MetzgerSK.github.io/shinyElement)</em>
 
-[This](https://github.com/MetzgerSK/shinyElement) repository houses 12\* of the 12 Shiny apps from *Using Shiny to Teach Econometric Models* by Shawna K. Metzger (Cambridge University Press).  They are identical to the files in the book's Code Ocean capsule of record [here](https://doi.org/10.24433/CO.2852743.v1).  (\*`LASSO_bchamp_lite` is a stripped-down version of the twelfth app.)  
+[This](https://github.com/MetzgerSK/shinyElement) repository houses 12\* of the 12 Shiny apps from *Using Shiny to Teach Econometric Models* by Shawna K. Metzger (2021, Cambridge University Press).  They are identical to the files in the book's Code Ocean capsule of record [here](https://doi.org/10.24433/CO.2852743.v1).  (\*`LASSO_bchamp_lite` is a stripped-down version of the twelfth app.)
 
 By being in a GitHub repo, the 12\* apps can be run directly via [Binder](https://mybinder.org) using the links below.  Other than clicking the link and waiting <~60 seconds, there's nothing additional you need to install or do.
 
 :arrow_right: **TL;DR: Click <span style="vertical-align:middle;">![Launch Rstudio Binder](http://mybinder.org/badge_logo.svg)</span> to launch an app.**
 
 ## The Manuscript
-Until the Element's released by Cambridge in late 2020/early 2021, you can access the final submitted manuscript in PDF form [here](https://bit.ly/3kHPk7O).
+
+> Metzger, Shawna K.  2021.  *Using Shiny to Teach Econometric Models*.  Cambridge: Cambridge University Press.
+
+The Element is available via CUP's website, [here](http://dx.doi.org/10.1017/9781108883993).
+
 
 ## The Apps
 
@@ -54,22 +58,22 @@ Same as `LASSO_bchamp`, but stripped down to basic functionality to allow the ap
 	Same as `predProbs`, but spiffed.
 - `predProbs_HMST`&nbsp;&nbsp;&nbsp;<span style="vertical-align:middle;">[![Launch Rstudio Binder](http://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/MetzgerSK/shinyElement/major?urlpath=shiny/predProbs_HMST/)</span><br>
 	Same app structure as `predProbs`, but modified to allow students to replicate the predicted probability tables from an actual published article.  Target table: Table 3 in Hensel, Mitchell, Sowers, and Thyne's ["Bones of Contention"](http://dx.doi.org/10.1177/0022002707310425
-) (2008, <em>Journal of Conflict Resolution</em>). 
+) (2008, <em>Journal of Conflict Resolution</em>).
 - `predProbsMNL`&nbsp;&nbsp;&nbsp;<span style="vertical-align:middle;">[![Launch Rstudio Binder](http://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/MetzgerSK/shinyElement/major?urlpath=shiny/predProbsMNL/)</span><br>
 	Same app structure as `predProbs`, but adapted to multinomial logit.  Generates predicted probabilities for Mexican voters' vote choice in the first round of the 2012 presidential election.
 
 ## Notes
-- The apps may take a minute or two to launch.  Hang tight.  
+- The apps may take a minute or two to launch.  Hang tight.
 	- The Binder page should load in a new window/tab once you click the link.  If it doesn't, click the link again or manually copy/paste the URL into a new window/tab.
-	- On the Binder page, as long as `Found built image, launching...` appears under the "Build Logs" header (click 'show' link at header's right to display the log), things are working fine.  
+	- On the Binder page, as long as `Found built image, launching...` appears under the "Build Logs" header (click 'show' link at header's right to display the log), things are working fine.
 	- <span style="font-size:0.75em;">:hourglass_flowing_sand:</span> = more complex apps. They'll take longer than the others to launch.
 	- If there's no text in the log after 15 seconds or so, refresh the page.  Rinse and repeat until the app loads.
 	- If the app doesn't load within a minute or two after `server running at https://...` displays (it should auto-redirect), either type that URL manually into your browser or hit refresh. Rinse and repeat until the app loads.
-- Every click launches a separate Binder instance, even for the same app.  This means multiple people can use the same app at once without any of the bottlenecking issues endemic to Shiny that stem from R being single-threaded.  
-- <a name="fn1_ret"></a>To launch a different app, either come back to the GitHub repo and click the app's Binder link *or* hit :back: twice.<sup><a href="#fn1">1</a></sup> 
+- Every click launches a separate Binder instance, even for the same app.  This means multiple people can use the same app at once without any of the bottlenecking issues endemic to Shiny that stem from R being single-threaded.
+- <a name="fn1_ret"></a>To launch a different app, either come back to the GitHub repo and click the app's Binder link *or* hit :back: twice.<sup><a href="#fn1">1</a></sup>
 
 ## Technical Notes
-- All the apps' Docker images have been prebuilt.  
+- All the apps' Docker images have been prebuilt.
 - Binder suggests each Binder'd GitHub repo can support ~100 simultaneous users.  My own rough tests suggest at least 50, under certain circumstances.
 - With how Binder's memory allocation works, the more any of the apps get used, the faster any of them will load.
 - If you fork any of the apps and make new commits in your forked repo, you'll have to go to the Binder [homepage](https://mybinder.org/) to generate a new link before you can run it on Binder.  When you first access the generated link, Binder will build the Docker image.  That usually takes anywhere from 20&ndash;40 minutes for the apps in their current state, depending.
