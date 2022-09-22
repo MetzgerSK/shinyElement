@@ -10,6 +10,7 @@ library(ggplot2)
 library(stargazer)
 library(shinyjqui)
 library(purrr)
+library(ggtext)
 library(showtext)
 
 # Install Roboto for ggplot2

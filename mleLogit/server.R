@@ -223,13 +223,15 @@ server <- function(input, output, session){
         gg <- ggplot() +
                 geom_point(aes(y=dat$y, x=dat$x1), color="blue", alpha=0.75) +
                 geom_line(aes(y=datFake$yHat, x=datFake$fakeX), col="red") +
-            labs(x="x", 
-                 y=expression("Pr("*italic("y")~"= 1)")
+            labs(x="<em>x</em>", 
+                 y="Pr(<em>y</em> = 1)"
                 ) +
             coord_cartesian(ylim=c(0,1), xlim=c(-10,10)) + 
             theme(plot.title = element_text(hjust = 0.5, 
                                             face = "bold", 
-                                            family = "Roboto")
+                                            family = "font"),
+                  axis.title.x = element_markdown(family=font),
+                  axis.title.y = element_markdown(family=font)
                  )
         
         # If there's more than 125 observations, add rugs
