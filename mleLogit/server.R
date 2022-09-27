@@ -1,3 +1,7 @@
+# Graph font
+font <- "Roboto"
+
+
 # > SERVER FUNCTION ----
 server <- function(input, output, session){
 
@@ -6,6 +10,16 @@ server <- function(input, output, session){
                                 alG = NULL, # intercept corresponding to best guess so far
                                 b1G = NULL) # x slope corresponding to best guess so far
     
+    
+    # Function for lnL
+    genLLH <- function(aHat, bHat){
+        # For a given value of aHat, determine lnL value
+        xb <- aHat + bHat*all()[[1]]$x1
+        obs <- ifelse(all()[[1]]$y==1, log(plogis(xb)), log(plogis(xb, lower.tail=FALSE)))
+    
+        # Return that sum + full data.fr
+        c(sum(obs), data.frame(obs))
+    }
     
     # > !!!! STARTS HERE (triggered by button press) !!!! < ----
     all <- eventReactive(input$dataGenButton, {
@@ -42,11 +56,7 @@ server <- function(input, output, session){
     
     ## LLH for current guess ====
     obsLLH <- reactive({
-
-        xb <- (input$aHat + input$b1Hat*all()[[1]]$x1)
-        obs <- ifelse(all()[[1]]$y==1, log(plogis(xb)), log(plogis(xb, lower.tail=FALSE)))
-
-        c(sum(obs), data.frame(obs))
+        genLLH(input$aHat, input$b1Hat)  # now streamlined
     })  
     
     ## All-time Max LLH ====
@@ -202,6 +212,8 @@ server <- function(input, output, session){
     
     # MAIN GRAPH ====
     output$gph<- renderPlot({
+        req(input$dataGenButton)
+        
         # Generate predicted value, given this expression.
         dat <- all()[[1]] 
         datFake <- data.frame(fakeX = seq(-10,10,0.005)) %>%
@@ -229,6 +241,74 @@ server <- function(input, output, session){
         
         # Return plot
         gg 
+    })
+    
+    # LLH SUBGPH HEADERS ====
+    output$header_lnL_aHat <- renderUI({
+        withMathJax(
+            paste0("\\( \\ln L \\) values when \\(\\hat{\\beta_1} = ", round(input$b1Hat, 2), "\\)")
+        )
+    })
+    output$header_lnL_b1Hat <- renderUI({
+        withMathJax(
+            paste0("\\( \\ln L \\) values when \\(\\hat{\\alpha} = ", round(input$aHat, 2), "\\)")
+        )
+    })
+        
+    # Start building the graph
+    gph_lnL <- function(line_y, line_x, point_y, point_x, xAxisLab, yAxis){
+        
+        yAxisLab <- ifelse(grepl("aHat", xAxisLab), "b1Hat", "aHat")
+                           
+        ggplot() +
+            geom_line(aes(y=line_y, x=line_x), col="black") +
+            geom_point(aes(y=point_y, x=point_x), color="red", size=2.5) +
+        labs(x=xAxisLab, 
+             y=paste0("ln<em>L</em> | ", yAxisLab, " = ", yAxis)
+            ) +
+        coord_cartesian(xlim=c(-6,6)) +    
+        theme(plot.title = element_text(hjust = 0.5, 
+                                        face = "bold", 
+                                        family = font),
+              axis.title.x = element_markdown(family=font),
+              axis.title.y = element_markdown(family=font),
+              axis.text.y  = element_blank(),
+              axis.ticks.y  = element_blank()
+             )
+    }
+    
+    # GRAPH: lnL vs. aHat value  ====
+    output$gph_lnL_aHat<- renderPlot({
+        req(input$dataGenButton)
+        
+        # Generate 'dataset' -> values of lnL, given this value of b1Hat
+        datFake_aHat <- map_dfr(seq(-6,6,0.05), 
+                                ~data.frame(aHat = .x, lnL = genLLH(.x, input$b1Hat)[[1]]))
+        
+        # Return graph
+        gph_lnL(line_y = datFake_aHat$lnL,     
+                line_x = datFake_aHat$aHat,
+                point_y = genLLH(input$aHat, input$b1Hat)[[1]], 
+                point_x = input$aHat,
+                xAxisLab = "aHat Values",
+                yAxis = round(input$b1Hat, 2))
+    })
+    
+    # GRAPH: lnL vs. b1Hat value  ====
+    output$gph_lnL_b1Hat<- renderPlot({
+        req(input$dataGenButton)
+        
+        # Generate 'dataset' -> values of lnL, given this value of aHat
+        datFake_b1Hat <- map_dfr(seq(-6,6,0.05), 
+                                ~data.frame(b1Hat = .x, lnL = genLLH(input$aHat, .x)[[1]]))
+        
+        # Return graph
+        gph_lnL(line_y = datFake_b1Hat$lnL,     
+                line_x = datFake_b1Hat$b1Hat,
+                point_y = genLLH(input$aHat, input$b1Hat)[[1]], 
+                point_x = input$b1Hat,
+                xAxisLab = "b1Hat Values",
+                yAxis = round(input$aHat, 2))
     })
     
     # RAW MODEL ====
@@ -307,6 +387,7 @@ server <- function(input, output, session){
     
     # OUTPUT: PRINT TRUE SLOPE + INTERCEPT (BASED ON ESTIMATED MODEL)
     output$trueEsts <- renderUI({
+        req(input$dataGenButton)
         coeffs <- coef(all()[[2]])
         
         withMathJax(
@@ -388,6 +469,7 @@ server <- function(input, output, session){
             shinyjs::show(id = "inf_instrText")
             shinyjs::show(id = "inf_ptTotal")
             shinyjs::show(id = "inf_bestGuess")
+
             if(input$solnButton!=0){
                 shinyjs::show(id = "inf_actual")
                 shinyjs::show(id = "inf_bestGuess_ans")
@@ -405,7 +487,8 @@ server <- function(input, output, session){
             hide(id = "formal_bestGuess")
             hide(id = "formal_bestGuess_ans")
             hide(id = "formal_actual")
-        
+            hide(id = "wrapper_lnLGphs")
+            
         # Formal language
         } else{
             hide(id = "inf_instrText")
@@ -417,7 +500,8 @@ server <- function(input, output, session){
             shinyjs::show(id = "formal_instrText")
             shinyjs::show(id = "formal_ptTotal")
             shinyjs::show(id = "formal_bestGuess")
-            
+            shinyjs::show(id = "wrapper_lnLGphs")
+                        
             if(input$solnButton!=0){
                 shinyjs::show(id = "formal_actual")
                 shinyjs::show(id = "formal_bestGuess_ans")
@@ -477,6 +561,24 @@ server <- function(input, output, session){
         updateSliderInput(session, "b1Hat", value=list(bestSoFar$b1G))
     })
     
+
+    ## Min/max div containing lnL graphs
+    runjs('
+        $("#lnLMinmz").hide();
+        $("#lnLGphs").hide();
+        
+        $("#lnLMinmz").click(function() {
+            $("#lnLGphs").slideUp();
+            $("#lnLMinmz").hide();
+            $("#lnLMaxmz").show();
+        });
+        
+        $("#lnLMaxmz").click(function() {
+            $("#lnLGphs").slideDown();
+            $("#lnLMaxmz").hide();
+            $("#lnLMinmz").show();
+        });
+    ')
     # Housekeeping
     session$onSessionEnded(stopApp) 
 }    
