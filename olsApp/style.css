@@ -6,11 +6,11 @@ table.shiny-table thead{
 
 /* Much nicer way of coding the div-in-div trick  */
 .inline-block-center {
-  text-align: center;
+    text-align: center;
 }
 .inline-block-center div {
-  display: inline-block;
-  text-align: left;
+    display: inline-block;
+    text-align: left;
 }
 
 /* Slight shading for violation-specific stuff */
@@ -22,15 +22,15 @@ table.shiny-table thead{
 }
 
 /* Different slider color when toggling different nObs ranges */
-.smaller .irs-single, 
-.smaller .irs-bar-edge, 
-.smaller .irs-bar, 
+.smaller .irs-single,
+.smaller .irs-bar-edge,
+.smaller .irs-bar,
 .smaller .irs-grid-pol{
 	background: Teal;
 }
 
 /* border for irs-bar-edge + irs-bar */
-.smaller .irs-bar-edge, 
+.smaller .irs-bar-edge,
 .smaller .irs-bar{
 	border-color: Teal;
 }
@@ -47,7 +47,7 @@ h5:before{
 	font-style: normal;
 	display: inline-block;
 	text-decoration: inherit;
-	content: "\f0da"; 
+	content: "\f0da";
 	padding-right: 4px;
 }
 h5{

@@ -1,10 +1,10 @@
 /* Much nicer way of coding the div-in-div trick  */
 .inline-block-center {
-  text-align: center;
+    text-align: center;
 }
 .inline-block-center div {
-  display: inline-block;
-  text-align: left;
+    display: inline-block;
+    text-align: left;
 }
 
 /* make RC slider special color to give it some punch */
