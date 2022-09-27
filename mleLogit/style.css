@@ -7,7 +7,7 @@
 	text-align: left;
 }
 
-/* To get the DT centered, but not super narrow (to avoid the nesting 
+/* To get the DT centered, but not super narrow (to avoid the nesting
    induced by the usual div-in-div trick, so that widths are adjustable) */
 .ibcOuter {
 	text-align: center;
@@ -24,9 +24,9 @@
 
 /* Small description text for sidebar */
 .descTxt{
-	font-size: 75%; 
-	font-style: italic; 
-	color: #999;	
+	font-size: 75%;
+	font-style: italic;
+	color: #999;
 }
 
 /* Shrink checkbox */
@@ -34,7 +34,7 @@
 	font-size: .8em;
     width:  calc(.8em + 2px);
     height: calc(.8em + 2px);
-	
+
 	padding-left: 0.4em;
     padding-top:  1.5em;
 	top: 0; /* if multiline label*/
@@ -53,7 +53,7 @@
 	padding-left: 2rem;
 }
 
-.pretty .state label:after, 
+.pretty .state label:after,
 .pretty .state label:before{
 	top: calc(50% - ((1em + 2px)/2));
 }
@@ -65,7 +65,7 @@ h4{
 
 /* Add double caret in to help */
 h4:before{
-	font-family: FontAwesome; 
+	font-family: FontAwesome;
 	content: "\f101 \00a0";
 }
 
@@ -74,7 +74,7 @@ h4:before{
 	margin-top: 0px;
 }
 
-/* Also: no extra embellishment for the callout box h4s 
+/* Also: no extra embellishment for the callout box h4s
    OR for the modal popup title*/
 .bs-callout h4:before, h4.modal-title:before{
 	content: "";
@@ -92,7 +92,7 @@ h4:before{
 
 /* Bumping margin for explanation popup */
 .modal-body h4{
-	margin-top: 20px;	
+	margin-top: 20px;
 	margin-bottom: 7px;
 }
 
@@ -126,11 +126,11 @@ h4:before{
 }
 
 /* HR line - little more kick */
-hr{ 
+hr{
     margin-bottom: 20px !important;
 	margin-top: -45px !important;
 	padding-top: 15px !important;
-	
+
 	height: 50px !important;
     border: 0 !important;
 	border-bottom: 1px solid #77777778 !important;
@@ -143,10 +143,23 @@ hr{
 	color: #fff;
 }
 
+/* Styling header for lnL gphs*/
+.lnLheader{
+	/* Basics */
+	background-color: #325D88;
+	color: white;
+
+	/* Padding and corner round */
+	padding: 5px;
+	border-radius: 24px;
+	
+	text-align: center;
+}
+
 /* Setting solution hover behavior */
 #solnButton:hover{
 	background-color: #7d0c02 !important;
-	border: 0px 0px 0px 0px !important;*/
+	border: 0px 0px 0px 0px !important;
 }
 
 /* Setting reset hover behavior */
@@ -169,16 +182,16 @@ hr{
 
 /* padding for LLH button in general (need to apply to wrapper div) */
 #inside_restore.llhBtn{
-	padding-top: 5.5px !important; 
-	padding-bottom: 5.5px !important; 
+	padding-top: 5.5px !important;
+	padding-bottom: 5.5px !important;
 }
 
 /* restore button: general properties */
 #restoreButton{
-	color: #000; 
-	background-color: #FF8C00; 
-	height: 30px; 
-	padding: 0px 10px 0px 10px; 
+	color: #000;
+	background-color: #FF8C00;
+	height: 30px;
+	padding: 0px 10px 0px 10px;
 	font-size:80%;
 }
 
@@ -208,14 +221,14 @@ hr{
 
 /* For centering the button's text and the button's div */
 #inside_restore, #inside_explain, #restoreButton{
-	display: -webkit-box; 
-	display: -ms-flexbox; 
-	display: flex; 
-	-webkit-box-align: center; 
-	-ms-flex-align: center; 
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
 	align-items: center;
-	-webkit-box-pack: center; 
-	-ms-flex-pack: center; 
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
 	justify-content: center;
 }
 
@@ -246,7 +259,7 @@ hr{
 
 /* Make link color more legible (because seriously) */
 a, a:visited{
-	color: #d9534f; 
+	color: #d9534f;
 }
 
 /* Keep original green for hover */
@@ -255,15 +268,42 @@ a:hover{
 }
 
 /* Different slider color when toggling different nObs ranges */
-.smaller .irs-single, 
-.smaller .irs-bar-edge, 
-.smaller .irs-bar, 
+.smaller .irs-single,
+.smaller .irs-bar-edge,
+.smaller .irs-bar,
 .smaller .irs-grid-pol{
-	background: #F47C3C; 
+	background: #F47C3C;
 }
 
 /* border for irs-bar-edge + irs-bar */
-.smaller .irs-bar-edge, 
+.smaller .irs-bar-edge,
 .smaller .irs-bar{
-	border-color: #f47c3C; 
+	border-color: #f47c3C;
+}
+
+/* Adding class for close button at upper right for bs callouts */
+.iconBx{
+	color: #999;
+    padding: 3px;
+    border-radius: 5px;
+	display: block;
+    float: right;
+    position: relative;
+    top: 0px;
+    right: 0px;
+    height: 10px;
+}
+
+.iconBx:hover{
+	color: #666;
+	transform: scale(1.2);
+	transition: transform .25s; 
+}
+
+/* lnL Graphs - wrapper div properties */
+#wrapper_lnLGphs{
+	min-height: 20px;
+	border-radius: 5px; 
+	background-color: #e0e0e0;
+    padding: 5px 10px 10px;
 }

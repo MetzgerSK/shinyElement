@@ -62,7 +62,7 @@ ui <- fluidPage(
                                     width = "200px"
                                 )
                             ),
-                            div(style="flex:1; margin-left:10px; /*padding-top:8px;*/",
+                            div(style="flex:1; margin-left:10px;",
                                 prettyCheckbox("sigmaMatch", label= HTML("Make comparable to <code>leastSq</code>"),
                                                status="primary", value=FALSE, 
                                                icon = icon("check"), shape="curve", animation="smooth")

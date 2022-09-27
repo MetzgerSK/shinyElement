@@ -34,11 +34,11 @@ table.shiny-table thead{
 
 /* Much nicer way of coding the div-in-div trick  */
 .inline-block-center {
-  text-align: center;
+   text-align: center;
 }
 .inline-block-center div {
-  display: inline-block;
-  text-align: left;
+   display: inline-block;
+   text-align: left;
 }
 
 /* Slight shading for violation-specific stuff */

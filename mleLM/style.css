@@ -7,7 +7,7 @@
 	text-align: left;
 }
 
-/* To get the DT centered, but not super narrow (to avoid the nesting 
+/* To get the DT centered, but not super narrow (to avoid the nesting
    induced by the usual div-in-div trick, so that widths are adjustable) */
 .ibcOuter {
 	text-align: center;
@@ -24,9 +24,9 @@
 
 /* Small description text for sidebar */
 .descTxt{
-	font-size: 75%; 
-	font-style: italic; 
-	color: #999;	
+	font-size: 75%;
+	font-style: italic;
+	color: #999;
 }
 
 /* Shrink checkbox */
@@ -34,8 +34,8 @@
 	font-size: .8em;
     width:  calc(.8em + 2px);
     height: calc(.8em + 2px);
-	
-	padding-left: 0.4em; 
+
+	padding-left: 0.4em;
     padding-top:  1.5em;
 	/* SINGLE LINE*/
 	top: 0; /* if multiline*/
@@ -54,7 +54,7 @@
 	padding-left: 2rem;
 }
 
-.pretty .state label:after, 
+.pretty .state label:after,
 .pretty .state label:before{
 	top: calc(50% - ((1em + 2px)/2));
 }
@@ -66,7 +66,7 @@ h4{
 
 /* Add double caret in to help */
 h4:before{
-	font-family: FontAwesome; 
+	font-family: FontAwesome;
 	content: "\f101 \00a0";
 }
 
@@ -75,7 +75,7 @@ h4:before{
 	margin-top: 0px;
 }
 
-/* Also: no extra embellishment for the callout box h4s 
+/* Also: no extra embellishment for the callout box h4s
    OR for the modal popup title*/
 .bs-callout h4:before, h4.modal-title:before{
 	content: "";
@@ -93,7 +93,7 @@ h4:before{
 
 /* Bumping margin for explanation popup */
 .modal-body h4{
-	margin-top: 20px;	
+	margin-top: 20px;
 	margin-bottom: 7px;
 }
 
@@ -127,11 +127,11 @@ h4:before{
 }
 
 /* HR line - little more kick */
-hr{ 
+hr{
     margin-bottom: 20px !important;
 	margin-top: -45px !important;
 	padding-top: 15px !important;
-	
+
 	height: 50px !important;
     border: 0 !important;
 	border-bottom: 1px solid #77777778 !important;
@@ -147,18 +147,18 @@ hr{
 /* Setting solution hover behavior */
 #solnButton:hover{
 	background-color: #7d0c02 !important;
-	border: 0px 0px 0px 0px !important;*/
+	border: 0px 0px 0px 0px !important;
 }
 
 /* Setting reset hover behavior */
 #resetButton:hover{
 	background-color: #666 !important;
-	border: 0px 0px 0px 0px !important;*/
+	border: 0px 0px 0px 0px !important;
 }
 
 /* Setting explanation hover behavior */
 #explainButton:hover{
-	background-color: #93C54B !important; 
+	background-color: #93C54B !important;
 	color: #000 !important;
 }
 
@@ -170,16 +170,16 @@ hr{
 
 /* padding for LLH button in general (need to apply to wrapper div) */
 #inside_restore.llhBtn{
-	padding-top: 5.5px !important; 
-	padding-bottom: 5.5px !important; 
+	padding-top: 5.5px !important;
+	padding-bottom: 5.5px !important;
 }
 
 /* restore button: general properties */
 #restoreButton{
-	color: #000; 
-	background-color: #FF8C00; 
-	height: 30px; 
-	padding: 0px 10px 0px 10px; 
+	color: #000;
+	background-color: #FF8C00;
+	height: 30px;
+	padding: 0px 10px 0px 10px;
 	font-size:80%;
 }
 
@@ -209,14 +209,14 @@ hr{
 
 /* For centering the button's text and the button's div */
 #inside_restore, #inside_explain, #restoreButton{
-	display: -webkit-box; 
-	display: -ms-flexbox; 
-	display: flex; 
-	-webkit-box-align: center; 
-	-ms-flex-align: center; 
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
 	align-items: center;
-	-webkit-box-pack: center; 
-	-ms-flex-pack: center; 
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
 	justify-content: center;
 }
 
@@ -259,7 +259,7 @@ hr{
 	pointer-events: none;
 	border-color: rgba(147, 159, 156, 0);
 	border-left-color: #fff;
-    border-width: 25.36px;  
+    border-width: 25.36px;
     margin-top: -25.36px;
 }
 
@@ -271,28 +271,28 @@ hr{
 /* Step headers */
 .steps{
 	/* Basics */
-	background-color: #325D88; 
+	background-color: #325D88;
 	color: white;
-	
+
 	/* Padding and corner round */
 	padding: 5px;
-	border-radius: 24px;  
-	
+	border-radius: 24px;
+
 	/* font size */
 	font-size: 110%;
-	
+
 	/* to make the arrow work */
 	position: relative;
-	
+
 	/* To center vert */
-	display: -webkit-box; 
-	display: -ms-flexbox; 
-	display: flex; 
-	-webkit-box-align: center; 
-	-ms-flex-align: center; 
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
 	align-items: center;
-    -webkit-box-pack : center; 
-	-ms-flex-pack : center; 
+    -webkit-box-pack : center;
+	-ms-flex-pack : center;
 	justify-content: center;
 }
 
@@ -325,10 +325,10 @@ hr{
 }
 
 .numberCircle:before {
-    padding-left: 0.35em; 
+    padding-left: 0.35em;
 }
 .numberCircle:after {
-    padding-right: 0.35em; 
+    padding-right: 0.35em;
 }
 
 /* Adding whitespace around the raw results download button */
@@ -352,7 +352,7 @@ hr{
 
 /* Make link color more legible (because seriously) */
 a, a:visited{
-	color: #d9534f; 
+	color: #d9534f;
 }
 
 /* Keep original green for hover */
@@ -361,15 +361,15 @@ a:hover{
 }
 
 /* Different slider color when toggling different nObs ranges */
-.smaller .irs-single, 
-.smaller .irs-bar-edge, 
-.smaller .irs-bar, 
+.smaller .irs-single,
+.smaller .irs-bar-edge,
+.smaller .irs-bar,
 .smaller .irs-grid-pol{
-	background: #F47C3C; 
+	background: #F47C3C;
 }
 
 /* border for irs-bar-edge + irs-bar */
-.smaller .irs-bar-edge, 
+.smaller .irs-bar-edge,
 .smaller .irs-bar{
-	border-color: #f47c3C; 
+	border-color: #f47c3C;
 }

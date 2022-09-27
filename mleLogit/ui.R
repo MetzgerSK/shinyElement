@@ -123,6 +123,31 @@ ui <- fluidPage(
                         # Pop-up window with explanation about what's going on
                         source("ui_expl__popup.R", local=TRUE)$value,
                         
+                        # Expandable section with lnL vs. param graphs
+                        div(id="wrapper_lnLGphs", style="margin-bottom:30px;",
+                            # Min/max btns for upper right (lnLGphs = hidden by default)
+                            div(id="lnLMinmz", class="iconBx", icon("window-minimize")),
+                            bsTooltip("lnLMinmz", "Minimize", "left"),
+                            div(id="lnLMaxmz", class="iconBx", icon("window-maximize")),
+                            bsTooltip("lnLMaxmz", "Maximize", "left"),
+
+                            h4("Graphs: \\(\\ln L \\) vs. Parameter Values", style="margin-top:10px;"),
+                                                        
+                            ## (This div starts as hidden via raw JS code executed from server)
+                            fluidRow(id="lnLGphs", style="vertical-align:top;margin-top:5px;",
+                                column(1),
+                                column(5,
+                                    uiOutput("header_lnL_aHat", class="lnLheader"),
+                                    plotOutput("gph_lnL_aHat")
+                                ),
+                                column(5,
+                                    uiOutput("header_lnL_b1Hat", class="lnLheader"),
+                                    plotOutput("gph_lnL_b1Hat")
+                                ),
+                                column(1)
+                            )
+                        ),
+                        
                         # The actual results 
                         hidden(
                             div(id="wrapper_rslts",
