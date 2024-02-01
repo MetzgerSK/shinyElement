@@ -3,7 +3,7 @@ fluidRow(style="margin:0px;",
     conditionalPanel("input.model_cens == 1",
         h4("What should I see?"),
         "From the 'Non-Normal' tab, we've already established that OLS with the untransformed 
-        duration performs poorly because of non-linearity in parameters.  Right-censored data makes OLS' performance even worse, because OLS' inability to model right censoring properly.  As a consequence, the estimates will be", em("biased"), "and  ", em("inefficient."),
+        duration performs poorly because of non-linearity in parameters.  Right-censored data makes OLS' performance even worse because of OLS' inability to model right censoring properly.  As a consequence, the estimates will be", em("biased"), "and  ", em("inefficient."),
         br(),br(),
         h4("Where should I look to see that?"),
         strong("Biased:"), "Top two rows won't match for all columns; top row won't fall in between values in 3rd and 4th rows for all columns.  Additionally, these estimates will also differ from the OLS estimates on the 'Non-Normal' tab (provided that all common slider/field values are identical).",

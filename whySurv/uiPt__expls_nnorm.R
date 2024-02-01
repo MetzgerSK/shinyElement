@@ -2,7 +2,7 @@
 fluidRow(style="margin:0px;",
     conditionalPanel("input.model_nnorm == 1",
         h4("What should I see?"),
-        "This is a naive model--as if you opened the dataset and ran an OLS regression using the duration, without transforming the duration at all.  The standard errors will be",em("inefficient"),"for the reasons noted above.  However, the estimates will also be ",em("biased"),"because the true DGP is non-linear in parameters.  OLS requires linearity in parameters to obtain unbiased estimates; see the OLS assumption simulation", HTML(paste0(a(href="http://www.shawnakmetzger.com/ols","here."))),
+        "This is a naive model--as if you opened the dataset and ran an OLS regression using the duration, without transforming the duration at all.  The standard errors will be",em("inefficient"),"for the reasons noted above.  However, the estimates will also be ",em("biased"),"because the true DGP is non-linear in parameters.  OLS requires linearity in parameters to obtain unbiased estimates; see the OLS assumption simulation", HTML(paste0(a(href="https://mybinder.org/v2/gh/MetzgerSK/shinyElement/major?urlpath=shiny/olsApp/","here"))), ".",
         br(),br(),
         h4("Where should I look to see that?"),
         strong("Biased:"), "Top two rows won't match for all columns; top row won't fall in between values in 3rd and 4th rows for all columns.",

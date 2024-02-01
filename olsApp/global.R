@@ -88,5 +88,5 @@ nonNormErrExpl <- fluidPage(
             h5("On the 'Estimates: Distribution Plots' tab..."),
             p(strong("Non-normal sampling distributions"), HTML("Not all the sampling distributions will be normally distributed for small <em>n</em>.  The smoothed 
             density (solid navy line) will differ from the normal distribution (dashed red line).  Use the sampling distributions on the No Violations tab
-            for the same <em>n</em> and common sliders to help see the differnces."))
+            for the same <em>n</em> and common sliders to help see the differences."))
 )
