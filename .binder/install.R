@@ -56,6 +56,8 @@ install.packages("qqplotr")
 install.packages("plotly")
 install.packages("forecast")
 
+# VGAM now also throws compiling errors for 1.1-2, so force-install 1.1-5
+remotes::install_version("VGAM", version="1.1-5", upgrade="never", repos="http://cran.us.r-project.org")
 
 # Force dplyr to be 0.8.4, as it would have likely been on 2020-04-06 (somewhere along the way, after all the above finishes, 1.1.4 is getting installed)
 remotes::install_version("dplyr", "0.8.4") 
