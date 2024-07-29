@@ -33,11 +33,15 @@ server <- function(input, output, session){
     rv$setupComplete <- FALSE
     rv$setupComplete <- finally(datStatus, function() {rv$setupComplete <- TRUE} )
 
+    # Create reactives for the two key params, so as not to rely on slider updates
+    rv_alpha  <- reactiveVal(NULL)
+    rv_lambda <- reactiveVal(NULL)
+    
     # Just for a slight pause, if everything's already loaded, so people can read RQ.
     Sys.sleep(3) 
 
 
-  # KEY CALCS ----  
+  # KEY CALCS ---- 
     # > !!!! SERVER'S ACTIONS START HERE (triggered by button press) !!!! <
     estimate <- reactive({
         paste(input$dataGenButton, input$solnButton)
@@ -48,17 +52,23 @@ server <- function(input, output, session){
         # Hide the "Note..." on the various pages + graph caption
         shinyjs::hide(selector="h4.simFyiHdr")
         hideElement("gphCapt")
-
+        
+        # Force update of lambda and alpha for the calculations
+        ## (If this triggers b/c of solnButton, the sliders won't auto-update
+        ## until after these calcs finish, which is too late.)
+        rv_lambda(ifelse(input$solnButton==1, 0.001, isolate(input$lambda)))
+        rv_alpha( ifelse(input$solnButton==1, 1,     isolate(input$alpha)))
+        
         # Pull relevant model results
-        info <- megaMod[[paste0("l", input$lambda)]]
+        info <- megaMod[[paste0("l", rv_lambda())]]
 
         # Insert lambda into info (into list in first element, as third list item)
-        info[[1]][[3]] <- input$lambda
+        info[[1]][[3]] <- rv_lambda()
         
         # Return    
         return(info)
     })
-    
+
     ### MISC KEY FUNCTIONS ====
     # Round + force dp display + unlist function (to make print code lines less cluttered)
     roundUnl <- function(obj, pl){
@@ -124,8 +134,8 @@ server <- function(input, output, session){
         
         # Write out the correct penalty expression, depending on alpha value
         penExp <- ifelse(holder==1,
-                         paste0(input$lambda, " \\sum_{k=1}^{K} \\left( \\left| \\beta_k \\right|  \\right)"),
-                         paste0(input$lambda, " \\sum_{k=1}^{K} \\left( {\\beta_k}^2 \\right)")  
+                         paste0(rv_lambda(), " \\sum_{k=1}^{K} \\left( \\left| \\beta_k \\right|  \\right)"),
+                         paste0(rv_lambda(), " \\sum_{k=1}^{K} \\left( {\\beta_k}^2 \\right)")  
                   )
             
         linCombCalc <- paste0( "\\left( y - \\mathbf{X} B \\right)^2 + ", penExp)
@@ -279,13 +289,13 @@ server <- function(input, output, session){
         out2 <- data.frame(all()[2]) %>% filter(ourstates==0)
         
         # In sample
-        is  <- ic.fit(mod.coeffs, mod.df, in2$textpart , in2$partypct , ifelse(input$solnButton==0, isolate(input$lambda), 0.001))
+        is  <- ic.fit(mod.coeffs, mod.df, in2$textpart , in2$partypct , rv_lambda()) 
             # R^2
             is.r2 <- cor(in2$textpart, in2$partypct)^2  
             is <- list(is, is.r2) %>% unlist()
                 
         # OOS
-        oos <- ic.fit(mod.coeffs, mod.df, out2$textpart, out2$partypct, ifelse(input$solnButton==0, isolate(input$lambda), 0.001))
+        oos <- ic.fit(mod.coeffs, mod.df, out2$textpart, out2$partypct, rv_lambda())
             # R^2
             oos.r2 <- cor(out2$textpart, out2$partypct)^2
             oos <- list(oos, oos.r2) %>% unlist()
@@ -297,8 +307,8 @@ server <- function(input, output, session){
         
         # Append to the data table
         resFit <<- rbind(resFit,
-                        cbind(ifelse(input$solnButton==0, isolate(input$alpha) , 1), 
-                              ifelse(input$solnButton==0, isolate(input$lambda), 0.001),
+                        cbind(rv_alpha(), 
+                              rv_lambda(),
                               paste0("(", b1, ",", b2, ",", b3,")"),
                               roundUnl(is[1],2), roundUnl(oos[1],2), 
                               roundUnl(is[2],2), roundUnl(oos[2],2), 
