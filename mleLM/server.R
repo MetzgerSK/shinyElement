@@ -304,7 +304,8 @@ server <- function(input, output, session){
             geom_density(alpha=.2, size = 1.05, color="#104E8B") + 
             geom_rug(alpha=0.5) +  
             stat_function(fun = dnorm, args = list(mean = 0, sd = input$sigmaHat),
-                          color = "#FF4040", size = 1, linetype="dashed") + 
+                          color = "#FF4040", size = 1, linetype="dashed", 
+                          inherit.aes=FALSE) + 
             xlim(-3.5*sd(obs), 3.5*sd(obs)) +
             labs(title = "Distance between yHat and x",
                  x     = "Distance (uHat)") + 
