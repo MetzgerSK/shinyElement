@@ -13,6 +13,7 @@ library(VGAM)
 library(lavaan)
 
 ## (unique to ui, not already in server's list)
+library(spsComps)   # has to be loaded BEFORE shinyBS, or else it'll mask functions from shinyBS that you use
 library(shinyBS)
 library(shinyjs)
 library(shinythemes)
@@ -46,6 +47,16 @@ nObsBsTooltip <- function(stub){
     eval(parse(text=expr))
 }
 #****************************************************************************
+# Min/max/step values for the nObs sliders (b/c these will now be referenced
+# across multiple files -> define in one place, so I don't go nuts if I make changes)
+    smMin <- 4
+    smMax <- 30
+    smDel <- 1
+                
+    lgMin <- 50
+    lgMax <- 1000
+    lgDel <- 50
+    
 # Explanations: Common text
 ## E(u|x) vs E(u) note
 techSideNoteEu0 <- HTML("<em>Technical side note:</em> \\( E \\left( u \\right) =0 \\) only guarantees \\( \\text{Corr} \\left( x,u \\right) 

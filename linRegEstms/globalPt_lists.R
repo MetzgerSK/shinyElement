@@ -1,7 +1,17 @@
 #*********************************************
 # ALL GLOBAL LISTS/VECTORS
 #**************************
-
+# Min/max/step values for the nObs sliders (b/c these will now be referenced
+# across multiple files -> define in one place, so I don't go nuts if I make changes)
+    smMin <- 9
+    smMax <- 30
+    smDel <- 1
+                
+    lgMin <- 20
+    lgMax <- 500
+    lgDel <- 10
+        
+    
 # Raw Sim Output: model results selector
     ## Main variant
     modList <- list( "OLS" = 1, 

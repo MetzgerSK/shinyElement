@@ -13,16 +13,6 @@ dblClk <- function(stub, nSld){
         onevent("nObs', stub,'", event="dblclick", expr={    
             clk <- ifelse(rv', stub,'$state=="small", 0, 1)  # rv will have pre-switch state
             curr <- input$nObs', stub, '                     # current slider value
-
-            # Just to define these in one place, so I don\'t go nuts if I make changes
-            smMin <- 9
-            smMax <- 30
-            smDel <- 1
-                        
-            lgMin <- 20
-            lgMax <- 500
-            lgDel <- 10
-        
         
             # General idea: when user switches, keep the slider value in the same
             # general ballpark of where it currently is, which means figuring out

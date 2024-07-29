@@ -3,6 +3,7 @@
 #*********************
 library(shiny)
 library(DT)
+library(spsComps)
 library(shinyBS)
 library(shinyjs)
 library(shinythemes)

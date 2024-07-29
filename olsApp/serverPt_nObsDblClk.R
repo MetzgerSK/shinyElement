@@ -14,16 +14,6 @@ dblClk <- function(stub, nSld){
             clk <- ifelse(rv', stub,'$state=="small", 0, 1)  # rv will have pre-switch state
             curr <- input$nObs', stub, '                     # current slider value
 
-            # Just to define these in one place, so I don\'t go nuts if I make changes
-            smMin <- 4
-            smMax <- 30
-            smDel <- 1
-                        
-            lgMin <- 50
-            lgMax <- 1000
-            lgDel <- 50
-        
-        
             # General idea: when user switches, keep the slider value in the same
             # general ballpark of where it currently is, which means figuring out
             # the current slider\'s position and determining the new value, given
