@@ -10,6 +10,8 @@ install.packages("dplyr")
 install.packages("forecast")
 install.packages("foreign")
 install.packages("future")
+install.packages("ggplot2") 
+install.packages("ggtext")
 install.packages("glmnet")
 install.packages("glue")
 install.packages("haven")
@@ -48,16 +50,4 @@ install.packages("tibble")
 install.packages("zoo")
 
 
-# Reinstall anything involving ggplot
-remotes::install_version("testthat", "3.2.1", upgrade="never", repos="http://cran.us.r-project.org") # b/c older testthats run into problems on Ubuntu 22.04, which Binder now uses as of OCT23, and several packages will try to install testthat.  Without this fix, those installs will fail.
-install.packages("ggplot2") 
-remotes::install_github("wilkelab/ggtext", ref = "50fdaba101b2c591c08e9d67782a5b86621a4fa9")    # b/c CRAN build not avail for 3.6.3
 install.packages("qqplotr")
-install.packages("plotly")
-install.packages("forecast")
-
-# VGAM now also throws compiling errors for 1.1-2, so force-install 1.1-5
-remotes::install_version("VGAM", version="1.1-5", upgrade="never", repos="http://cran.us.r-project.org")
-
-# Force dplyr to be 0.8.4, as it would have likely been on 2020-04-06 (somewhere along the way, after all the above finishes, 1.1.4 is getting installed)
-remotes::install_version("dplyr", "0.8.4") 
