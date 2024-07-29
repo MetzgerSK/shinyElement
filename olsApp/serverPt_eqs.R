@@ -89,7 +89,8 @@ output$equation_endMeasErrX <- renderUI({
 output$equationEst_endMeasErrX <- renderUI({
     withMathJax(
         paste(
-            '\\(y = \\hat{\\alpha} + \\hat{\\beta}_1 \\left (x + ', input$noiseX_endMeasErrX, 'v  \\right) + \\hat{\\sigma} u
+            '\\(y = \\hat{\\alpha} + \\hat{\\beta}_1 \\left (x + ', input$noiseX_endMeasErrX, 'v  \\right) + 
+            \\hat{\\beta}_2 z + \\hat{\\sigma} u
             \\text{, where } v \\sim \\mathcal{N}(0,1) \\)'
         )
     )
@@ -114,7 +115,7 @@ output$equationEst_endMeasErrY <- renderUI({
     withMathJax(
         paste(
             '\\(\\left(y ', ifelse(input$bonusNoise_endMeasErrY>=0, "+", ""), input$bonusNoise_endMeasErrY, 'v  \\right) 
-                        = \\hat{\\alpha} + \\hat{\\beta}_1 x + \\hat{\\sigma} u
+                        = \\hat{\\alpha} + \\hat{\\beta}_1 x + \\hat{\\beta}_2 z + \\hat{\\sigma} u
                         \\text{, where } v \\sim \\mathcal{N}(0,1) \\)'
         )
     )
