@@ -194,13 +194,14 @@ yVsyHat <- function(mod, params=NULL, yTrueX=NULL, end=FALSE){
                           )) +
             geom_line(aes(x=x,    y=yTrue, color="True DGP"),     alpha=.8, size=1, linetype="dash") +
             geom_line(aes(x=xMod, y=yHat,  color="Model's yHat"), alpha=.8, size=1) + 
-            scale_color_brewer(palette="Dark2") +
+            scale_color_brewer(palette="Dark2", guide = guide_legend(title = NULL)) +
             labs(x = "<em>x</em>",
                  y = "<em>y</em>",
                  caption = capt) +
             theme(legend.title = element_blank(),
                   text = element_text(family = "Lato", size=15)) # for legend font
-        
+    
+    #browser()    
     ggplotly(gg, tooltip="text") %>%
              style(hoverlabel = list(font = list(family="Lato", size="15"))) # for tooltip font
 }
