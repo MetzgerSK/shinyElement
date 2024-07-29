@@ -150,7 +150,7 @@ titlePanel(HTML("LASSO: Beauchamp 2017 <em>(Lite Version)</em>")),
                 
                     plotlyOutput("predVsReal") %>% withSpinner(), 
                     hidden(div(id = "gphCapt",
-                            HTML("data pt. colors: predicted winner <br> shaded areas: actual winner"),
+                            HTML("data pt. colors/shapes: predicted winner <br> shaded areas: actual winner"),
                             style = "text-align: right; font-family: 'PT Sans Narrow'; font-size: 85%;"
                           )
                     ),

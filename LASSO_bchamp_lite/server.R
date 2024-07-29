@@ -169,14 +169,14 @@ server <- function(input, output, session){
                                         fill = col #can't do -inf, inf b/c plotly freaks out.
                                     ), 
                       fill=c("#F8766D", "#619CFF"), alpha = 0.4) +  
-            geom_point(data = pred.dem, color = "#0c4c8a", 
+            geom_point(data = pred.dem, color = "#0c4c8a", shape = 19,
                         aes(x = textpart, y = partypct,
                             text = eval(parse(text=tooltipInfo))
                         )
                       ) +
-            geom_point(data = pred.rep, color = "#ef3b2c", 
+            geom_point(data = pred.rep, color = "#ef3b2c", shape = 17,
                         aes(x = textpart, y = partypct,
-                           text = eval(parse(text=tooltipInfo))
+                            text = eval(parse(text=tooltipInfo))
                         )
                       ) +
             geom_vline(xintercept=0.5) + geom_hline(yintercept=0.5) +
@@ -187,7 +187,7 @@ server <- function(input, output, session){
             labs(title = "2012 US Presidential Election Results",
                  x = "Predicted Obama Vote Share", 
                  y = "Actual Obama Vote Share", 
-                 caption = "scatter colors: predicted winner \n shaded areas: actual winner"
+                 caption = "scatter colors/shapes: predicted winner \n shaded areas: actual winner"
             ) 
 
         # Show the caption, now that graph's about to be rendered
