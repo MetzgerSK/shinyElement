@@ -45,9 +45,11 @@ install.packages("shinythemes")
 install.packages("showtext")
 install.packages("spsComps")
 install.packages("stargazer")
+install.packages("Stat2Data")
 install.packages("stringr")
 install.packages("survival")
 install.packages("tibble")
+install.packages("VGAM")
 install.packages("zoo")
 
 
