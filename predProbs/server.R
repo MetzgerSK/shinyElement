@@ -7,10 +7,13 @@ server <- function(input, output, session){
             })
             
     output$modObj <- renderPrint({
+                        req(results())
                         summary(results())
                   })
                     
     output$fFormExpr <- renderUI({
+        req(results())
+        
         # To get ticket type dummy variables set correctly
         if(input$coeffClass=="1"){
             cl2 <- 0
@@ -42,6 +45,8 @@ server <- function(input, output, session){
     })
     
     output$predPr <- renderUI({
+        req(results())
+        
         # To get ticket type dummy variables set correctly
         if(input$coeffClass=="1"){
             cl2 <- 0

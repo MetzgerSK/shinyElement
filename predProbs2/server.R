@@ -23,6 +23,8 @@ server <- function(input, output, session){
 #***********************************************************************  
     # OUTPUT: the model object
     output$modObj <- renderUI({
+        req(results())
+        
         # get the raw HTML
         tab <- stargazer(results(), 
                     type="html",
@@ -54,6 +56,8 @@ server <- function(input, output, session){
     
     # OUTPUT: the longhand eq w/dynamic components
     output$fFormPrExpr <- renderUI({  #
+        req(results())
+        
         # To get ticket type dummy variables set correctly
         setTktVars(cl2, cl3)
         

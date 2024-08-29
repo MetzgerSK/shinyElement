@@ -40,6 +40,8 @@ server <- function(input, output, session){
     
     ## PRED PROB EQS: SPECIFIC ====
     fFormPrExpr <- reactive({
+        req(results())
+        
         # To set educ dummy variables
         ed2 <- ifelse(input$coeffEduc==1, 1, 0)
         ed3 <- ifelse(input$coeffEduc==2, 1, 0)
@@ -221,6 +223,7 @@ server <- function(input, output, session){
 #*********************************************************************** 
     # R ====
     output$modObj <- renderPrint({
+        req(results())
         summary(results())
     }, width = 85)
 
@@ -231,6 +234,8 @@ server <- function(input, output, session){
 
     # STARGAZER TABLE ====
     output$sgzTable <- renderUI({
+        req(results())
+        
         # number of places to round to
         places <- 2
 
@@ -342,7 +347,7 @@ server <- function(input, output, session){
 
         # return as wrapped HTML
         HTML(tab)
-    })
+    }) 
 
     
 #***********************************************************************
