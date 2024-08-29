@@ -68,8 +68,8 @@ server <- function(input, output, session){
         # Rest of prose interp.  Only thing that needs doing = swapping out NARWHAL with actual outcome descriptor.
         expl <- paste0('(predicted) probability that a ', ifelse(as.numeric(input$coeffRelig)==0, "non-religious", "religious"), 
                         ' voter with ', educTxt,
-                        ' and self-reported ', input$coeffIdeo, ' on a 10-point left-right scale 
-                        voted for the NARWHAL during the first round of the 2012 Mexican presidential election.')
+                        ' and self-reported ', input$coeffIdeo, ' on a 10-point left-right scale ',
+                        'voted for the NARWHAL during the first round of the 2012 Mexican presidential election.')
 
         # create linear combos for each outcome
         ## If we're running the model for the first time

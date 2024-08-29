@@ -124,7 +124,7 @@ ui <- fluidPage(
                             uiOutput("k5Eq"),
                             br()
                         ))
-                    )
+                    ) 
                 ),
 
                 # Model output (hidden until model's estimated)
@@ -141,10 +141,10 @@ ui <- fluidPage(
                         tabPanel("Stata Output",
                             verbatimTextOutput("modObj_stata")
                         )
-                    ),
+                    ) %>% withSpinner,
                     br()
 
-                )
+                ) 
 
 
             )
