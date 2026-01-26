@@ -7,7 +7,8 @@ DT.header.weib <- c("aHat", "b1Hat", "b2Hat", "se.aHat", "se.b1Hat", "se.b2Hat",
 # Processed Results (table) ====
 output$res_reg_nnorm <- renderTable(rownames=TRUE, striped=TRUE, na="NA",  {  
     MC_est <- data_reg_nnorm()[[1]] %>% data.frame()  
-
+    truth <- data_reg_nnorm()[[2]]
+    
     if(input$model_nnorm == 1){
         MC_est <- MC_est[,1:7]
         MC_est$dm_shapeSE <- NA
@@ -21,9 +22,14 @@ output$res_reg_nnorm <- renderTable(rownames=TRUE, striped=TRUE, na="NA",  {
     } 
     
     # Print out the stuff.
-    isolate(printMCs(aHat=input$aHat_nnorm, b1Hat=input$b1Hat_nnorm, b2Hat=input$b2Hat_nnorm, shape=input$noise_nnorm,
-                     ptEstA=MC_est$b0, ptEstB1=MC_est$b1, ptEstB2=MC_est$b2, ptEstSh=MC_est$shape,
-                     seA=MC_est$se0, seB1=MC_est$se1, seB2=MC_est$se2, seSh=MC_est$dm_shapeSE))
+    isolate(printMCs(aHat =truth["aHat"],  b1Hat=truth["b1Hat"], 
+                     b2Hat=truth["b2Hat"], shape=truth["noise"],
+                     
+                     ptEstA=MC_est$b0, ptEstB1=MC_est$b1, 
+                     ptEstB2=MC_est$b2, ptEstSh=MC_est$shape,
+                     
+                     seA=MC_est$se0, seB1=MC_est$se1, 
+                     seB2=MC_est$se2, seSh=MC_est$dm_shapeSE))
 })  
 
 # Raw results (DT) ====
@@ -56,7 +62,8 @@ output$table_rawOutpt_nnorm <- DT::renderDataTable({
 # Processed Results (table) ====
 output$res_reg_cens <- renderTable(rownames=TRUE, striped=TRUE,  {  
     MC_est <- data_reg_cens()[[1]] %>% data.frame()
-
+    truth <- data_reg_cens()[[2]]
+    
     if(input$model_cens == 1){
         MC_est <- MC_est[,1:7]
         MC_est$dm_shapeSE <- NA
@@ -73,9 +80,14 @@ output$res_reg_cens <- renderTable(rownames=TRUE, striped=TRUE,  {
     }
     
     # Print out the stuff.
-    isolate(printMCs(aHat=input$aHat_cens, b1Hat=input$b1Hat_cens, b2Hat=input$b2Hat_cens, shape=input$noise_cens,
-                     ptEstA=MC_est$b0, ptEstB1=MC_est$b1, ptEstB2=MC_est$b2, ptEstSh=MC_est$shape,
-                     seA=MC_est$se0, seB1=MC_est$se1, seB2=MC_est$se2, seSh=MC_est$dm_shapeSE ))
+    isolate(printMCs(aHat =truth["aHat"],  b1Hat=truth["b1Hat"], 
+                     b2Hat=truth["b2Hat"], shape=truth["noise"],
+                     
+                     ptEstA=MC_est$b0, ptEstB1=MC_est$b1, 
+                     ptEstB2=MC_est$b2, ptEstSh=MC_est$shape,
+                     
+                     seA=MC_est$se0, seB1=MC_est$se1, 
+                     seB2=MC_est$se2, seSh=MC_est$dm_shapeSE ))
 })
 
 # Raw Results (DT) ====
@@ -124,7 +136,9 @@ colBuilder <- function(true, ptEst, se){
 }
 
 # Table builder (cols = params, rows = param statistics)
-printMCs = function(aHat, b1Hat, b2Hat, shape, ptEstA, ptEstB1, ptEstB2, ptEstSh, seA, seB1, seB2, seSh) {
+printMCs = function(aHat, b1Hat, b2Hat, shape, 
+                    ptEstA, ptEstB1, ptEstB2, ptEstSh, 
+                    seA, seB1, seB2, seSh) {
                 
     text <- cbind(colBuilder(aHat,  ptEstA,  seA ),  # For the intercept
                   colBuilder(b1Hat, ptEstB1, seB1),  # For x

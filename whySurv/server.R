@@ -68,7 +68,14 @@ server <- function(input, output, session){
         sims <- input$sims_nnorm  # of simulations
         
         #  MC it
-        list(data.frame(MC_easy(dgp="nnorm_OLS_data", estimator="sim_est", obs=nObs, seed=seed, reps=sims)))
+        list(data.frame(MC_easy(dgp="nnorm_OLS_data", estimator="sim_est_nnorm", 
+                                obs=nObs, seed=seed, reps=sims)),
+             c(aHat  = input$aHat_nnorm,    # intercept
+               b1Hat = input$b1Hat_nnorm,	# for x
+               b2Hat = input$b2Hat_nnorm,	# for z
+               noise = input$noise_nnorm)
+        ) 
+             
     })
     
     ## > Censoring ==================
@@ -79,10 +86,14 @@ server <- function(input, output, session){
         cens <- input$perc_cens
         
         #  MC it
-        return(list(data.frame(
-                        MC_easy(dgp="cens_OLS_data", estimator="sim_est_cens", obs=nObs, seed=seed, reps=sims, cens=cens)
-                    ))
-               )
+        list(data.frame(MC_easy(dgp="cens_OLS_data", estimator="sim_est_cens", 
+                                obs=nObs, seed=seed, reps=sims, cens=cens)),
+             c(aHat  = input$aHat_cens,     # intercept
+               b1Hat = input$b1Hat_cens,	# for x
+               b2Hat = input$b2Hat_cens,	# for z
+               noise = input$noise_cens,	# how spread out the ui's are; higher values = more spread (i.e., more static)
+               cens  = input$perc_cens)
+        )
     })
     
     # On first run, unhide the results div, hide the instruction div    

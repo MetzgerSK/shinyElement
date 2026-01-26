@@ -1,5 +1,6 @@
 # > WRAPPER: Define omnibus estm functions ===================
 sim_est = function(temp_data) {
+sim_est_nnorm = function(temp_data) {
     set1 <- sim_est_OLS_t(temp_data)
     set2 <- sim_est_OLS_lnT(temp_data)
     set3 <- sim_est_Weib_t(temp_data)
