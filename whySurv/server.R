@@ -123,6 +123,8 @@ server <- function(input, output, session){
         shinyjs::show("all_posT")
         shinyjs::show("selMod_posT")
         shinyjs::show("selMod_posT2")
+        shinyjs::hide("h4_rawOutpt_posT")
+        shinyjs::hide("h4_distPlot_posT")
         shinyjs::hide("instr_posT")
     })
         
@@ -130,6 +132,8 @@ server <- function(input, output, session){
         shinyjs::show("all_nnorm")
         shinyjs::show("selMod_nnorm")
         shinyjs::show("selMod_nnorm2")
+        shinyjs::hide("h4_rawOutpt_nnorm")
+        shinyjs::hide("h4_distPlot_nnorm")
         shinyjs::hide("instr_nnorm")
     })
     
@@ -137,8 +141,11 @@ server <- function(input, output, session){
         shinyjs::show("all_cens")
         shinyjs::show("selMod_cens")
         shinyjs::show("selMod_cens2")
+        shinyjs::hide("h4_rawOutpt_cens")
+        shinyjs::hide("h4_distPlot_cens")
         shinyjs::hide("instr_cens")
     })
+    
     
     #**********************************************
     ## TABLES (all) -----------------------

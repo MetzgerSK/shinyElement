@@ -84,8 +84,8 @@ tabsetPanel(
     ),
     tabPanel("Raw Simulation Output", value="output_nnorm",   
         mainPanel(
-            h4("NOTE: must click 'Simulate!' on 'Main' tab first.", align = "left"),
-            uiOutput("selMod_nnorm"),
+            h4("NOTE: must click 'Simulate!' on 'Main' tab first.", align = "left",
+               id="h4_rawOutpt_nnorm"),
             shinyjs::hidden(uiOutput("selMod_nnorm", class="selMod")),
             br(),
             DT::dataTableOutput("table_rawOutpt_nnorm")
@@ -97,8 +97,8 @@ tabsetPanel(
                       c("aHat", "b1Hat", "b2Hat", "Shape (pHat)"))
         ),
         mainPanel(
-            h4("NOTE: must click 'Simulate!' on 'Main' tab first.", align = "left"),
-            uiOutput("selMod_nnorm2"),
+            h4("NOTE: must click 'Simulate!' on 'Main' tab first.", align = "left",
+               id="h4_distPlot_nnorm"),
             shinyjs::hidden(uiOutput("selMod_nnorm2", class="selMod")),
             br(),
             plotOutput("distPlot_nnorm")
