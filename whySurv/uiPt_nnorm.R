@@ -74,7 +74,7 @@ tabsetPanel(
 
                         # Start of explanations
                         h4("Why do non-normally distributed errors matter?"),
-                        paste(nonNormText),
+                        HTML(nonNormText),
                         br(),br(),
                         source("uiPt__expls_nnorm.R", local=TRUE)$value
                     )    

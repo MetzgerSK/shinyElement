@@ -12,7 +12,7 @@ nonNormText <- "OLS assumes normally distributed errors for hypothesis testing
                 purposes.  If we don't have them, and we incorrectly assume we do, the
                 estimates will be **inefficient**.  An estimator that can handle the
                 non-normal errors will always be more efficient, asymptotically (Greene 2012,
-                73-75)."
+                73&ndash;75)."
 censText <- "Censoring is one of the most frequently mentioned reasons for
              OLS' inappropriateness.  A (right-)censored duration is one where a subject
              does not fail before our observation period ends.  As a result, we do not
