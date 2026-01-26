@@ -1,4 +1,24 @@
-# Non-normal error - Weibull (always true for this set of sims)
+# > POSITIVE T =====
+posT_OLS_data = function(nobs) {
+    aHat  <- input$aHat_posT       # intercept
+    b1Hat <- input$b1Hat_posT	   # for x
+    b2Hat <- input$b2Hat_posT	   # for z
+    noise <- input$noise_posT	   # how spread out the ui's are; higher values = more spread (i.e., more static)
+    
+    z <- rnorm(nobs)
+    x1 <- rnorm(nobs)
+    
+    u <- rnorm(nobs)                # will make log-normal the true
+    
+    y <- exp(aHat + b1Hat*x1 + b2Hat*z + noise^-1*u)
+
+    fail <- rep(1, nobs)
+    
+    data.frame(y, x1, z, fail)
+}
+
+# > NON-NORMAL ERROR =======
+## true model = Weibull (except for pos t tab, always true for this set of sims)
 nnorm_OLS_data = function(nobs) {
     aHat  <- input$aHat_nnorm       # intercept
     b1Hat <- input$b1Hat_nnorm	    # for x

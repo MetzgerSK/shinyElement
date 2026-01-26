@@ -30,6 +30,11 @@ resetVals <- function(stub){
 }
 
 
+## > POSITIVE T ---------
+randVals("posT")
+resetVals("posT")
+
+
 ## > NON-NORMAL ---------
 randVals("nnorm")
 resetVals("nnorm")

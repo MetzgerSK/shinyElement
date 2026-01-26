@@ -37,7 +37,24 @@ sampDistro <- function(x, param){
         )
       
 }    
+
+
+## > POSITIVE T ----
+output$distPlot_posT <- renderPlot({
+    x <- data_reg_posT()[[1]] %>% data.frame()
     
+    if(input$model_posT == 1){
+        x <- x[,1:7]
+    } else if(input$model_posT == 2){
+        x <- x[,8:14]    
+    } else if(input$model_posT == 3){
+        x <- x[,15:22]
+    }
+    
+    sampDistro(x, input$paramG_posT)  
+    
+})
+
 
 ## > NON-NORMAL PLOT ----
 output$distPlot_nnorm <- renderPlot({

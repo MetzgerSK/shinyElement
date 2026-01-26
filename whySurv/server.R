@@ -61,6 +61,22 @@ server <- function(input, output, session){
     #**********************************************
     ## EVENT REACTIVES (!! START) -----------------------
     #***********************
+    ## > Positive T ==================
+    data_reg_posT <- eventReactive(input$goButton_posT, {
+        seed <- input$seed_posT  # to set seed for each MC experiment, for replicability.
+        nObs <- input$nObs_posT  # number of observations
+        sims <- input$sims_posT  # of simulations
+        
+        #  MC it
+        list(data.frame(MC_easy(dgp="posT_OLS_data", estimator="sim_est_posT", 
+                                obs=nObs, seed=seed, reps=sims)),
+            c(aHat  = input$aHat_posT,    # intercept
+              b1Hat = input$b1Hat_posT,	  # for x
+              b2Hat = input$b2Hat_posT,	  # for z
+              noise = input$noise_posT)
+        ) 
+    })
+    
     ## > Non-Normal ==================
     data_reg_nnorm <- eventReactive(input$goButton_nnorm, {
         seed <- input$seed_nnorm  # to set seed for each MC experiment, for replicability.
@@ -97,6 +113,11 @@ server <- function(input, output, session){
     })
     
     # On first run, unhide the results div, hide the instruction div    
+    observeEvent(input$goButton_posT,{
+        shinyjs::show("all_posT")
+        shinyjs::hide("instr_posT")
+    })
+        
     observeEvent(input$goButton_nnorm,{
         shinyjs::show("all_nnorm")
         shinyjs::hide("instr_nnorm")

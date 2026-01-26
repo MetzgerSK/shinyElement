@@ -1,5 +1,12 @@
 # > WRAPPER: Define omnibus estm functions ===================
-sim_est = function(temp_data) {
+sim_est_posT = function(temp_data) {
+    set1 <- sim_est_OLS_t(temp_data)
+    set2 <- sim_est_OLS_lnT(temp_data)
+    set3 <- sim_est_LN_t(temp_data)
+    
+    c(set1, set2, set3)
+}
+
 sim_est_nnorm = function(temp_data) {
     set1 <- sim_est_OLS_t(temp_data)
     set2 <- sim_est_OLS_lnT(temp_data)
@@ -77,6 +84,29 @@ sim_est_Weib_t <- function(temp_data) {
         names(lm_sh) <- "shape" 
     lm_shSE <- deltamethod(~ 1/exp(x1), summary(model)$table[4,1], (summary(model)$table[4,2])^2)
         names(lm_shSE) <- "dm_shapeSE" 
+        
+    return(c(lm_b, lm_se, lm_sh, lm_shSE))  
+}
+
+# LN (AFT) w/DV = t
+sim_est_LN_t <- function(temp_data) {
+    # estimate model
+    model <- survreg(Surv(y, fail) ~ x1 + z, data=temp_data, dist="lognormal")  # reports back in AFT
+    
+    # true # of covariates (cuts off ln(shape))
+    cols <- length(c(summary(model)$table[,2]))
+    
+    # reduce lm_coef to a single vector with values for each b and se
+    lm_b <- c(summary(model)$table[1:cols-1,1])
+        names(lm_b) <- paste0("b",0:(length(lm_b)-1))
+    lm_se <- c(summary(model)$table[1:cols-1,2])
+        names(lm_se) <- paste0("se",0:(length(lm_se)-1))
+    
+    # the shape 
+    lm_sh <- 1/summary(model)$scale
+        names(lm_sh) <- "shape" 
+    lm_shSE <- deltamethod(~ 1/exp(x1), summary(model)$table[3,1], (summary(model)$table[3,2])^2)
+        names(lm_shSE) <- "dm_shapeSE"
         
     return(c(lm_b, lm_se, lm_sh, lm_shSE))  
 }

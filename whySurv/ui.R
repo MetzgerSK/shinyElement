@@ -20,8 +20,14 @@ censText <- "Censoring is one of the most frequently mentioned reasons for
              to* the end of our observation period.  Right censoring creates a problem for
              OLS because the estimator cannot handle it.  Instead, OLS treats all subjects
              as failing at the time we record, which is clearly not true." 
-simInstrs <- "Set values at left, click 'Simulate!' button to run, and wait
-              3-15 seconds for results to appear (see loading bar at upper or lower right)."
+yText <-   "OLS assumes that <em>y</em> can take any value between positive and negative
+            infinity.  However, durations are positive quantities&mdash;they are greater 
+            than zero.  If these positive quantities come about because of a non-linear
+            transformation to the right-hand side (as they do here), OLS assumes no such
+            transformation exists in the true DGP.  As a result, the OLS estimates will
+           **biased**."
+simInstrs <- HTML("Set values at left, click 'Simulate!' button to run, and wait
+              3&ndash;15 seconds for results to appear (see loading bar at upper or lower right).")
 
 # > UI START ----
 ui <- fluidPage(
@@ -34,7 +40,11 @@ ui <- fluidPage(
     withMathJax(),  # Can appear anywhere in UI. I usually put it as one of the first lines in fluidPage(), to make it easy to spot later on
     
     navbarPage("Why Duration Models?",                 
-               
+        # POSITIVE T ====
+        tabPanel(HTML("Positive <em>y</em>"), 
+            source("uiPt_posT.R", local=TRUE)$value
+        ),
+        
         # NON-NORMAL ERRORS ====
         tabPanel("Non-Normal Errors", 
             source("uiPt_nnorm.R", local=TRUE)$value

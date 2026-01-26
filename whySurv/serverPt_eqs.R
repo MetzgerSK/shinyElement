@@ -8,6 +8,42 @@
 ## (since we refer to it a LOT)
 linCombo <- "\\hat{\\alpha} + \\hat{\\beta}_1 x + \\hat{\\beta}_2 z + \\hat{p}^{-1} u"
 
+# >> OLS ASSUMPTION TEXT ----
+## Because some variant of it appears on every tab.
+olsAssume <- "\\text{ using classic linear regression (“OLS\", below), which assumes } u \\sim \\mathcal{N}"
+
+# > POSITIVE T ----
+# Truth ====
+output$eq_true_posT <- renderUI({
+    withMathJax(
+        paste(
+            '\\(t = \\exp \\left(', input$aHat_posT, 
+                                    ifelse(input$b1Hat_posT>=0, "+", ""), input$b1Hat_posT, 'x',
+                                    ifelse(input$b2Hat_posT>=0, "+", ""), input$b2Hat_posT, 'z', 
+                                    '+', input$noise_posT, '\ ^{-1} u\\right) \\text{,  in which } u \\sim \\mathcal{N} \\text{.}\\)'
+        )
+    )
+})
+
+# Displayed Estms ====
+output$eq_estm_posT <- renderUI({  
+    if(input$model_posT == 1){             # OLS w/DV = t
+        str <- paste0('t= ', linCombo, olsAssume, "\\text{.}")
+        
+    } else if(input$model_posT == 2){      # OLS w/DV = ln(t)
+        str <- paste0('\\ln \\left( t \\right) = ', linCombo, olsAssume, "\\text{.}")
+    
+    } else if(input$model_posT == 3){      # LN w/DV = t
+        str <- paste0('t= \\exp \\left( ', linCombo, '\\right) 
+                            \\text{ using a log-normal duration model, which assumes } u \\sim \\mathcal{N} \\text{.}')
+    }
+    
+    withMathJax(
+        paste0('\\(', str, '\\)')
+    )
+        
+})
+
 
 # > NON-NORMAL ERRORS ----
 # Truth ====
@@ -24,13 +60,11 @@ output$eq_true_nnorm <- renderUI({
 
 # Displayed Estms ====
 output$eq_estm_nnorm <- renderUI({
-    olsAssume <- "\\text{ using OLS, which assumes } u \\sim \\mathcal{N} \\text{.}"
-    
     if(input$model_nnorm == 1){             # OLS w/DV = t
-        str <- paste0('t= ', linCombo, olsAssume)
+        str <- paste0('t= ', linCombo, olsAssume, "\\text{.}")
         
     } else if(input$model_nnorm == 2){      # OLS w/DV = ln(t)
-        str <- paste0('\\ln \\left( t \\right) = ', linCombo, olsAssume)
+        str <- paste0('\\ln \\left( t \\right) = ', linCombo, olsAssume, "\\text{.}")
     
     } else if(input$model_nnorm == 3){      # Weibull w/DV = t
         str <- paste0('t= \\exp \\left( ', linCombo, '\\right) 
@@ -60,7 +94,7 @@ output$eq_true_cens <- renderUI({
 output$eq_estm_cens <- renderUI({
     
     # Reused MJ strings
-    olsAssume <- paste0("\\text{ using OLS, } \\\\ \\qquad \\text{which assumes } u \\sim \\mathcal{N} ")
+    olsAssume <- gsub("below), which", "below), } \\\\ \\qquad \\text{which", olsAssume, fixed=TRUE)    # break into two lines
     cens0 <- "\\text{ and 0% of observations are right censored.}"
     cens <- paste0('\\text{ and }', input$perc_cens, '\\text{% of observations are right censored.}')
     

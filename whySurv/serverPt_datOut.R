@@ -1,8 +1,63 @@
 # Common header
 DT.header.reg <- c("aHat", "b1Hat", "b2Hat", "se.aHat", "se.b1Hat", "se.b2Hat", "shape")
-DT.header.weib <- c("aHat", "b1Hat", "b2Hat", "se.aHat", "se.b1Hat", "se.b2Hat", "shape", "se.shape")
-   
+DT.header.ln <- DT.header.weib <- 
+                 c("aHat", "b1Hat", "b2Hat", "se.aHat", "se.b1Hat", "se.b2Hat", "shape", "se.shape")
 
+## > POSITIVE T ----------------------------
+# Processed Results (table) ====
+output$res_reg_posT <- renderTable(rownames=TRUE, striped=TRUE, na="NA",  {  
+    MC_est <- data_reg_posT()[[1]] %>% data.frame()  
+    truth <- data_reg_posT()[[2]]
+
+    if(input$model_posT == 1){
+        MC_est <- MC_est[,1:7]
+        MC_est$dm_shapeSE <- NA
+        
+    } else if(input$model_posT == 2){
+        MC_est <- MC_est[,8:14]
+        MC_est$dm_shapeSE <- NA
+        
+    } else if(input$model_posT == 3){   # Log-normal output has same general format as Weibull, so no need to modify
+        MC_est <- MC_est[,15:22]
+    } 
+    
+    # Print out the stuff.
+    isolate(printMCs(aHat =truth["aHat"],  b1Hat=truth["b1Hat"], 
+                     b2Hat=truth["b2Hat"], shape=truth["noise"],
+                     
+                     ptEstA=MC_est$b0, ptEstB1=MC_est$b1, 
+                     ptEstB2=MC_est$b2, ptEstSh=MC_est$shape,
+                     
+                     seA=MC_est$se0, seB1=MC_est$se1, 
+                     seB2=MC_est$se2, seSh=MC_est$dm_shapeSE))
+})  
+
+# Raw results (DT) ====
+output$table_rawOutpt_posT <- DT::renderDataTable({
+    MC_est <- data_reg_posT()[[1]] %>% data.frame()
+    
+    if(input$model_posT == 1){
+        MC_est <- MC_est[,1:7]
+        colHdr <- "DT.header.reg"
+        
+    } else if(input$model_posT == 2){
+        MC_est <- MC_est[,8:14]
+        colHdr <- "DT.header.reg"
+        
+    } else if(input$model_posT == 3){
+        MC_est <- MC_est[,15:22]
+        colHdr <- "DT.header.weib"
+        
+    } 
+    DT::datatable(MC_est, rownames= FALSE, colnames = eval(parse(text=colHdr)),
+                  options = list(
+                                 dom = 'l t p' 
+                                )) %>% 
+          formatRound(c(1:ncol(MC_est)), 5)
+    
+})
+
+   
 ## > NON-NORMAL ----------------------------
 # Processed Results (table) ====
 output$res_reg_nnorm <- renderTable(rownames=TRUE, striped=TRUE, na="NA",  {  
