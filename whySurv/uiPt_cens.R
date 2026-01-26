@@ -91,6 +91,9 @@ tabsetPanel(
     tabPanel("Raw Simulation Output", value="output_cens",   
         mainPanel(
             h4("NOTE: must click 'Simulate!' on 'Main' tab first.", align = "left"),
+            uiOutput("selMod_cens"),
+            shinyjs::hidden(uiOutput("selMod_cens", class="selMod")),
+            br(),
             DT::dataTableOutput("table_rawOutpt_cens")
         )
     ),
@@ -102,6 +105,9 @@ tabsetPanel(
         ),
         mainPanel(
             h4("NOTE: must click 'Simulate!' on 'Main' tab first.", align = "left"),
+            uiOutput("selMod_cens2"),
+            shinyjs::hidden(uiOutput("selMod_cens2", class="selMod")),
+            br(),
             plotOutput("distPlot_cens")
         )
     )

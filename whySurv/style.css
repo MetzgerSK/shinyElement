@@ -31,3 +31,9 @@
 	border: 1px solid #BBB;
 	background: #CCC;
 }
+
+/* Top margin for "Displayed Results" line */
+.selMod{
+    margin-top: 10px;   
+}
+}

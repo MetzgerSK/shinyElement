@@ -81,6 +81,9 @@ tabsetPanel(
     tabPanel("Raw Simulation Output", value="output_posT",
         mainPanel(
             h4("NOTE: must click 'Simulate!' on 'Main' tab first.", align = "left"),
+            uiOutput("selMod_posT"),
+            shinyjs::hidden(uiOutput("selMod_posT", class="selMod")),
+            br(),
             DT::dataTableOutput("table_rawOutpt_posT")
         )
     ),
@@ -91,6 +94,9 @@ tabsetPanel(
         ),
         mainPanel(
             h4("NOTE: must click 'Simulate!' on 'Main' tab first.", align = "left"),
+            uiOutput("selMod_posT2"),
+            shinyjs::hidden(uiOutput("selMod_posT2", class="selMod")),
+            br(),
             plotOutput("distPlot_posT")
         )
     )

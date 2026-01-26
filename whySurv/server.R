@@ -14,6 +14,12 @@ server <- function(input, output, session){
     source("serverPt_eqs.R", local=TRUE)
     
     
+    #*****************************************
+    ## SELECTED MODEL OUTPUTS -------------
+    #***********************    
+    source("serverPt_selMod.R", local=TRUE)
+    
+    
     #*********************************************************************
     # MC SIM FUNCTION -------------------
     #***********************	
@@ -115,16 +121,22 @@ server <- function(input, output, session){
     # On first run, unhide the results div, hide the instruction div    
     observeEvent(input$goButton_posT,{
         shinyjs::show("all_posT")
+        shinyjs::show("selMod_posT")
+        shinyjs::show("selMod_posT2")
         shinyjs::hide("instr_posT")
     })
         
     observeEvent(input$goButton_nnorm,{
         shinyjs::show("all_nnorm")
+        shinyjs::show("selMod_nnorm")
+        shinyjs::show("selMod_nnorm2")
         shinyjs::hide("instr_nnorm")
     })
     
     observeEvent(input$goButton_cens,{
         shinyjs::show("all_cens")
+        shinyjs::show("selMod_cens")
+        shinyjs::show("selMod_cens2")
         shinyjs::hide("instr_cens")
     })
     
