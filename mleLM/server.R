@@ -307,7 +307,7 @@ server <- function(input, output, session){
                           color = "#FF4040", size = 1, linetype="dashed", 
                           inherit.aes=FALSE) + 
             xlim(-3.5*sd(obs), 3.5*sd(obs)) +
-            labs(title = "Distance between yHat and x",
+            labs(title = "Distance between y and yHat",
                  x     = "Distance (uHat)") + 
             theme(plot.title = element_text(hjust = 0.5, face = "bold", family = paste0(font))
                  )
