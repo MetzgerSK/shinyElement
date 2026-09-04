@@ -20,7 +20,7 @@ install.packages("lavaan")
 install.packages("lmtest")
 install.packages("magrittr")
 install.packages("matrixcalc")
-remotes::install_version("mlogit", "1.1-0", repos="http://cran.us.r-project.org") # b/c they switched the coefficient label syntax from pre-1.1 versions
+remotes::install_version("mlogit", "1.1-0") # b/c they switched the coefficient label syntax from pre-1.1 versions
 install.packages("msm")
 install.packages("nlme")
 install.packages("openintro")
